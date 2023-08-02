@@ -1,13 +1,57 @@
+build
+dist
+node_modules
+lint.xml
+reports/*
+babelify-src
+docs/_build
+.DS_Store
+.tern-port
+TODO
+soljson.js
+*~
+*_group*.*.ts
+*_group*.ts
+stats.json
+.cache/
+
+# compiled output
+/dist
+/tmp
+/out-tsc
+
 # dependencies
 /node_modules
 
-# testing
-/coverage
+# IDEs and editors
+/.idea
+.project
+.classpath
+.c9/
+*.launch
+.settings/
+*.sublime-workspace
+.vscode/
 
-# production
-/build
+# IDE - VSCode
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
 
 # misc
-.DS_Store
-.env
+/.sass-cache
+/connect.lock
+/coverage
+/libpeerconnection.log
 npm-debug.log
+lerna-debug.log
+yarn-error.log
+testem.log
+/typings
+
+# System Files
+.DS_Store
+.vscode/settings.json
+.vscode/launch.json
