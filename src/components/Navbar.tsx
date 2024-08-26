@@ -1,3 +1,4 @@
+import { FaMoon, FaSun } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
 import {
   darkModeColor,
@@ -47,8 +48,8 @@ const Navbar = () => {
           <NavLink to="/contact">contact</NavLink>
         </div> */}
         <div>
-          <button className="p-2 text-2xl" onClick={toggleTheme}>
-            {isDarkMode ? '🌞' : '🌙'}
+          <button className="p-2 text-2xl text-gray-500" onClick={toggleTheme}>
+            {isDarkMode ? <FaSun /> : <FaMoon />}
           </button>
         </div>
       </div>
