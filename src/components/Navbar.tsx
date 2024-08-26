@@ -33,21 +33,21 @@ const Navbar = () => {
     >
       <div className="container mx-auto flex items-center justify-between px-4 py-4">
         <h1
-          className={`text-2xl font-bold hover:text-pink-500 dark:text-gray-500`}
+          className={`text-2xl font-bold hover:text-blue-600 ${isDarkMode ? darkModeTextColor : lightModeTextColor}`}
         >
-          <Link to="/">rishmi5h</Link>
+          <Link to="/">
+            rishmi
+            <span className="text-blue-600">5</span>h
+          </Link>
         </h1>
-        <div className="flex items-center space-x-8">
+        {/* <div className="flex items-center space-x-8">
           <NavLink to="/">home</NavLink>
+          <NavLink to="/about">about</NavLink>
           <NavLink to="/projects">projects</NavLink>
-          <NavLink to="/blog">blog</NavLink>
           <NavLink to="/contact">contact</NavLink>
-        </div>
+        </div> */}
         <div>
-          <button
-            className="rounded-full bg-gray-200 p-2 text-gray-800 dark:bg-gray-700 dark:text-white"
-            onClick={toggleTheme}
-          >
+          <button className="p-2 text-2xl" onClick={toggleTheme}>
             {isDarkMode ? '🌞' : '🌙'}
           </button>
         </div>
