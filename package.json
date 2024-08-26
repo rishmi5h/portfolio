@@ -8,8 +8,8 @@
   },
   "type": "module",
   "engines": {
-    "node": "20.x",
-    "pnpm": "8.x"
+    "node": ">=22.0.0",
+    "pnpm": ">=9.0.0"
   },
   "dependencies": {
     "framer-motion": "^11.3.30",
