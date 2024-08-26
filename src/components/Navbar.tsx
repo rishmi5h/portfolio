@@ -29,7 +29,7 @@ const Navbar = () => {
 
   return (
     <nav
-      className={`bg-white ${isDarkMode ? darkModeColor : lightModeColor} transition-colors duration-300`}
+      className={` ${isDarkMode ? darkModeColor : lightModeColor} transition-colors duration-300`}
     >
       <div className="container mx-auto flex items-center justify-between px-4 py-4">
         <h1
