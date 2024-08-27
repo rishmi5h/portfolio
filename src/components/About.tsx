@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { useTheme } from '../contexts/ThemeContext.tsx';
 import { Timeline } from './Timeline.tsx';
 
@@ -46,9 +47,9 @@ const About: React.FC = () => {
           <div className="flex flex-col items-center justify-center space-y-8">
             <Timeline events={timelineEvents} />
           </div>
-          <div className="text-center text-2xl font-bold">
-            checkout my projects
-          </div>
+          <h1 className="text-center text-2xl font-bold">
+            checkout my <Link to="/projects">projects</Link>
+          </h1>
         </div>
       </div>
     </div>
