@@ -25,15 +25,11 @@ const TimelineEvent: React.FC<TimelineEventProps> = ({
       <div
         className={`w-5/12 ${isLeft ? 'pr-4 text-right' : 'pl-4 text-left'}`}
       >
+        <div className={`text-xl font-bold text-blue-600`}>{title}</div>
         <div
-          className={`text-lg font-bold ${isDarkMode ? 'text-blue-400' : 'text-blue-600'}`}
+          className={`text-base font-semibold ${isDarkMode ? 'text-gray-300' : 'text-gray-600'}`}
         >
           {year}
-        </div>
-        <div
-          className={`font-semibold ${isDarkMode ? 'text-gray-200' : 'text-gray-800'}`}
-        >
-          {title}
         </div>
         <div className={`${isDarkMode ? 'text-gray-300' : 'text-gray-600'}`}>
           {description}
@@ -48,7 +44,7 @@ const TimelineEvent: React.FC<TimelineEventProps> = ({
         >
           {skill.split(', ').map((s, index) => (
             <span
-              className={`mb-1 ${isLeft ? 'ml-2' : 'mr-2'} rounded-full px-2 py-1 ${isDarkMode ? 'bg-blue-800 text-blue-200' : 'bg-blue-100 text-blue-800'}`}
+              className={`mb-1 ${isLeft ? 'ml-2' : 'mr-2'} rounded-full px-2 py-1 ${isDarkMode ? 'bg-blue-800 text-white' : 'bg-blue-100 text-blue-800'}`}
               key={index}
             >
               {s}
