@@ -1,5 +1,5 @@
 {
-  "name": "@nkzw/vite-ts-react-tailwind",
+  "name": "portfolio",
   "version": "0.0.1",
   "author": "Christoph Nakazawa <christoph.pojer@gmail.com>",
   "repository": {
@@ -8,8 +8,8 @@
   },
   "type": "module",
   "engines": {
-    "node": ">=22.0.0",
-    "pnpm": ">=9.0.0"
+    "node": "20.12.2",
+    "pnpm": "8.15.4"
   },
   "dependencies": {
     "framer-motion": "^11.3.30",
