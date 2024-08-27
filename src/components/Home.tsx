@@ -1,5 +1,4 @@
 import React from 'react';
-import { FaGithub, FaInstagram, FaLinkedin, FaTwitter } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
 import { darkModeColor, lightModeColor } from '../constants/colors.tsx';
 import { useTheme } from '../contexts/ThemeContext.tsx';
