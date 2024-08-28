@@ -19,3 +19,9 @@ body {
   color: var(--text-color);
   cursor: none;
 }
+
+@media (max-width: 768px) {
+  body {
+    cursor: pointer;
+  }
+}
