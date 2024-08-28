@@ -25,26 +25,28 @@ const TimelineEvent: React.FC<TimelineEventProps> = ({
       <div
         className={`w-5/12 ${isLeft ? 'pr-4 text-right' : 'pl-4 text-left'}`}
       >
-        <div className={`text-xl font-bold text-blue-600`}>{title}</div>
+        <div className={`mb-2 text-xl font-bold text-blue-600`}>{title}</div>
         <div
           className={`text-base font-semibold ${isDarkMode ? 'text-gray-300' : 'text-gray-600'}`}
         >
           {year}
         </div>
-        <div className={`${isDarkMode ? 'text-gray-300' : 'text-gray-600'}`}>
+        <div
+          className={`mb-1 ${isDarkMode ? 'text-gray-300' : 'text-gray-600'}`}
+        >
           {description}
         </div>
         <div
-          className={`text-sm ${isDarkMode ? 'text-gray-400' : 'text-gray-500'} mt-1`}
+          className={`mb-2 text-sm ${isDarkMode ? 'text-gray-400' : 'text-gray-500'} mt-1`}
         >
           {location}
         </div>
         <div
-          className={`text-sm ${isDarkMode ? 'text-blue-300' : 'text-blue-500'} mt-2 flex flex-wrap ${isLeft ? 'justify-end' : 'justify-start'}`}
+          className={`mt-2 flex flex-wrap text-sm ${isLeft ? 'justify-end' : 'justify-start'}`}
         >
           {skill.split(', ').map((s, index) => (
             <span
-              className={`mb-1 ${isLeft ? 'ml-2' : 'mr-2'} rounded-full px-2 py-1 ${isDarkMode ? 'bg-blue-800 text-white' : 'bg-blue-100 text-blue-800'}`}
+              className={` ${isLeft ? 'ml-2' : 'mr-2'} rounded-full px-2 py-1 ${isDarkMode ? 'bg-gray-700 text-gray-300' : 'bg-gray-200 text-gray-700'}}`}
               key={index}
             >
               {s}
