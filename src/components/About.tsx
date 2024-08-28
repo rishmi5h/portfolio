@@ -9,7 +9,7 @@ const About: React.FC = () => {
   const timelineEvents = [
     {
       description:
-        'Developed a quick build tool that reduced development time by 30%. Collaborated and trained other developers on new technologies / architectures.',
+        'Developed a quick build tool that reduced development time by 30%. Trained other developers on new technologies / architectures.',
       location: 'Hyderabad, India',
       skill:
         'java, springboot, react, docker, airflow, typescript, tailwind, python',
