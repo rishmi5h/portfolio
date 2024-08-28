@@ -11,7 +11,7 @@ const Projects: React.FC = () => {
       description:
         'ΣUI is a Component Library that helps in building UI faster and easier. ',
       githubLink: 'https://github.com/rishmi5h/Sigma-UI',
-      imageUrl: 'resources/sigma-ui.png',
+      imageUrl: '/src/assets/sigma-ui.png',
       name: 'Sigma UI - Component Library',
       projectLink: 'https://sigma-ui.netlify.app/',
       techStack: ['HTML', 'CSS', 'JavaScript', 'Tailwind CSS'],
@@ -19,7 +19,7 @@ const Projects: React.FC = () => {
     {
       description: 'A fun website to ask your crush out on a date. ',
       githubLink: 'https://github.com/rishmi5h/doyouwannagooutwithme',
-      imageUrl: 'resources/do-you-wanna-go-out.png',
+      imageUrl: '/src/assets/do-you-wanna-go-out.png',
       name: 'Do you wanna go out with me?',
       projectLink: 'https://silly-rabanadas-5bebaf.netlify.app/',
       techStack: ['HTML', 'CSS', 'JavaScript'],
@@ -27,7 +27,7 @@ const Projects: React.FC = () => {
     {
       description: 'Created 30 projects in 30 days using vanilla JavaScript. ',
       githubLink: 'https://github.com/rishmi5h/30days-vanilla-js-challenge',
-      imageUrl: '../resources/30-days-vanilla-js.png',
+      imageUrl: '/src/assets/30-days-vanilla-js.png',
       name: '30 days of vanilla JavaScript',
       projectLink: 'https://vanilla-js-projects-101.netlify.app/',
       techStack: ['HTML', 'CSS', 'JavaScript'],
@@ -36,11 +36,19 @@ const Projects: React.FC = () => {
       description:
         'Long short term memory (LSTM) based load forecasting for electricity demand',
       githubLink: 'https://github.com/rishmi5h/final-year-project',
-      imageUrl: 'resources/lstm.png',
+      imageUrl: '/src/assets/lstm.png',
       name: 'LSTM based load forecasting',
       projectLink:
         'https://drive.google.com/file/d/1nBQQUfHQqdP92OzcVOUmt2RFXrVNy6Sf/view',
       techStack: ['Machine Learning', 'Python', 'LSTM'],
+    },
+    {
+      description: 'A fun game to test your knowledge of flags emojis.',
+      githubLink: 'https://github.com/rishmi5h/know-the-flags',
+      imageUrl: '/src/assets/know-the-flags.png',
+      name: 'Know The Flags',
+      projectLink: 'https://flags-emoji.netlify.app/',
+      techStack: ['React', 'Tailwind CSS'],
     },
     // Add more projects as needed
   ];
