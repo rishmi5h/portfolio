@@ -27,7 +27,7 @@ const Projects: React.FC = () => {
     {
       description: 'Created 30 projects in 30 days using vanilla JavaScript. ',
       githubLink: 'https://github.com/rishmi5h/30days-vanilla-js-challenge',
-      imageUrl: 'resources/30-days-vanilla-js.png',
+      imageUrl: '../resources/30-days-vanilla-js.png',
       name: '30 days of vanilla JavaScript',
       projectLink: 'https://vanilla-js-projects-101.netlify.app/',
       techStack: ['HTML', 'CSS', 'JavaScript'],
@@ -47,7 +47,7 @@ const Projects: React.FC = () => {
 
   return (
     <div
-      className={`min-h-screen py-12 ${isDarkMode ? darkModeColor : lightModeColor} transition-colors duration-300`}
+      className={`min-h-[80vh] py-12 ${isDarkMode ? darkModeColor : lightModeColor} transition-colors duration-300`}
     >
       <div className="container mx-auto px-4">
         <h1
