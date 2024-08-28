@@ -10,7 +10,7 @@ const Home = () => {
     <div
       className={` ${isDarkMode ? darkModeColor : lightModeColor} transition-colors duration-300`}
     >
-      <div className="flex min-h-screen items-center justify-center">
+      <div className="flex min-h-[88vh] items-center justify-center">
         <div className="space-y-6 text-center">
           <h2
             className={`text-2xl font-light ${isDarkMode ? 'text-gray-300' : 'text-gray-700'}`}
