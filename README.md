@@ -47,5 +47,5 @@ Use this to restart your scripts instantly when a file changes:
 ```
 #!/usr/bin/env NODE_ENV=development node --watch --no-warnings --experimental-specifier-resolution=node --loader ts-node/esm
 
-console.log('This processes instantly restarts when a file changes.');
+console.log('This processes instantly restarts when a file changes');
 ```
