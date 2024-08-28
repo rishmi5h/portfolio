@@ -37,7 +37,7 @@ const About: React.FC = () => {
 
   return (
     <div
-      className={`min-h-screen ${isDarkMode ? 'darkModeColor text-white' : 'bg-white text-black'} transition-colors duration-300`}
+      className={`min-h-[80vh] ${isDarkMode ? 'darkModeColor text-white' : 'bg-white text-black'} transition-colors duration-300`}
     >
       <div className="flex items-start justify-center">
         <div className="mt-20 w-full space-y-6">
