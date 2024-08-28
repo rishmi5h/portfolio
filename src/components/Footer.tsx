@@ -1,4 +1,10 @@
-import { FaGithub, FaInstagram, FaLinkedin, FaTwitter } from 'react-icons/fa';
+import {
+  FaEnvelope,
+  FaGithub,
+  FaInstagram,
+  FaLinkedin,
+  FaTwitter,
+} from 'react-icons/fa';
 import { useTheme } from '../contexts/ThemeContext.tsx';
 
 const Footer = () => {
@@ -14,6 +20,7 @@ const Footer = () => {
         link="https://www.instagram.com/rishmi5h/"
       />
       <SocialIcon Icon={FaTwitter} link="https://twitter.com/rishmi5h" />
+      <SocialIcon Icon={FaEnvelope} link="mailto:rish.mish.2607@gmail.com" />
     </div>
   );
 };
