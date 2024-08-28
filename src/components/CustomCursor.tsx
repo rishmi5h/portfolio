@@ -6,12 +6,17 @@ const CustomCursor: React.FC = () => {
   const mouseY = useMotionValue(0);
   const [isHovering, setIsHovering] = useState(false);
   const [isVisible, setIsVisible] = useState(true);
+  const [isSmallScreen, setIsSmallScreen] = useState(false);
 
   const springConfig = { damping: 25, stiffness: 700 };
   const cursorX = useSpring(mouseX, springConfig);
   const cursorY = useSpring(mouseY, springConfig);
 
   useEffect(() => {
+    const checkScreenSize = () => {
+      setIsSmallScreen(window.innerWidth < 768); // Adjust this breakpoint as needed
+    };
+
     const moveCursor = (e: MouseEvent) => {
       mouseX.set(e.clientX - 16);
       mouseY.set(e.clientY - 16);
@@ -32,11 +37,14 @@ const CustomCursor: React.FC = () => {
       setIsVisible(true);
     };
 
+    checkScreenSize();
+    window.addEventListener('resize', checkScreenSize);
     window.addEventListener('mousemove', moveCursor);
     window.addEventListener('mouseover', handleMouseEnter);
     window.addEventListener('mouseout', handleMouseLeave);
 
     return () => {
+      window.removeEventListener('resize', checkScreenSize);
       window.removeEventListener('mousemove', moveCursor);
       window.removeEventListener('mouseover', handleMouseEnter);
       window.removeEventListener('mouseout', handleMouseLeave);
@@ -45,7 +53,9 @@ const CustomCursor: React.FC = () => {
 
   return (
     <motion.div
-      className="pointer-events-none fixed left-0 top-0 z-50 rounded-full bg-white mix-blend-difference"
+      className={`pointer-events-none fixed left-0 top-0 z-50 rounded-full bg-white mix-blend-difference ${
+        isSmallScreen ? 'hidden' : ''
+      }`}
       style={{
         height: isHovering ? 60 : 32,
         opacity: isVisible ? 1 : 0,
