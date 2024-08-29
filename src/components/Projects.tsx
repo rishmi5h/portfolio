@@ -21,7 +21,7 @@ const Projects: React.FC = () => {
       githubLink: 'https://github.com/rishmi5h/doyouwannagooutwithme',
       imageUrl: '/src/assets/do-you-wanna-go-out.png',
       name: 'Do you wanna go out with me?',
-      projectLink: 'https://silly-rabanadas-5bebaf.netlify.app/',
+      projectLink: 'https://doyouwannagooutwith.rishmi5h.com/',
       techStack: ['HTML', 'CSS', 'JavaScript'],
     },
     {
