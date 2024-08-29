@@ -13,7 +13,7 @@ const Projects: React.FC = () => {
       githubLink: 'https://github.com/rishmi5h/Sigma-UI',
       imageUrl: '/src/assets/sigma-ui.png',
       name: 'Sigma UI - Component Library',
-      projectLink: 'https://sigma-ui.netlify.app/',
+      projectLink: 'https://sigma-ui.rishmi5h.com/',
       techStack: ['HTML', 'CSS', 'JavaScript', 'Tailwind CSS'],
     },
     {
