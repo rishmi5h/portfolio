@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { FiEye } from 'react-icons/fi';
 import { Link } from 'react-router-dom';
 import { darkModeColor, lightModeColor } from '../constants/colors.tsx';
 import { useTheme } from '../contexts/ThemeContext.tsx';
@@ -45,9 +46,7 @@ const Home = () => {
               onClick={handleButtonClick}
             >
               <span className="mr-2">resume</span>
-              <svg className="h-4 w-4 fill-current" viewBox="0 0 20 20">
-                <path d="M13 8V2H7v6H2l8 8 8-8h-5zM0 18h20v2H0v-2z" />
-              </svg>
+              <FiEye className="h-4 w-4 font-bold" />
             </button>
           </div>
         </div>
@@ -58,7 +57,7 @@ const Home = () => {
           <div
             className={`rounded-lg p-6 shadow-lg ${isDarkMode ? 'bg-gray-800 text-white' : 'bg-white text-black'} w-full max-w-lg md:max-w-2xl`}
           >
-            <h2 className="mb-4 text-2xl font-bold">Resume</h2>
+            <h2 className="mb-4 text-center text-2xl font-bold">Resume</h2>
             <iframe
               allow="autoplay"
               height="400"
