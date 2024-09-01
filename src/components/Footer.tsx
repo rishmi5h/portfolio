@@ -25,7 +25,7 @@ const Footer = () => {
           link="https://www.instagram.com/rishmi5h/"
         />
         <SocialIcon Icon={FaTwitter} link="https://twitter.com/rishmi5h" />
-        <SocialIcon Icon={FaEnvelope} link="mailto:rish.mish.2607@gmail.com" />
+        <SocialIcon Icon={FaEnvelope} link="mailto:mail@rishmi5h.com" />
       </div>
     </footer>
   );
