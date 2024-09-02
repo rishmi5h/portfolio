@@ -1,6 +1,5 @@
 import React from 'react';
 import { FaExternalLinkAlt, FaGithub } from 'react-icons/fa';
-import { darkModeColor, lightModeColor } from '../constants/colors.tsx';
 import { useTheme } from '../contexts/ThemeContext.tsx';
 
 interface ProjectCardProps {
@@ -24,17 +23,17 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
 
   return (
     <div
-      className={`overflow-hidden rounded-lg shadow-md transition-all duration-300 hover:shadow-xl ${isDarkMode ? 'bg-gray-800' : 'bg-white'} ${isDarkMode ? darkModeColor : lightModeColor} border-t-4 border-blue-400 dark:border-blue-600`}
+      className={`h-full overflow-hidden rounded-lg shadow-lg transition-all duration-300 hover:shadow-2xl ${
+        isDarkMode ? 'bg-gray-800 text-white' : 'bg-white text-gray-800'
+      }`}
     >
-      <a href={projectLink} rel="noopener noreferrer" target="_blank">
-        <img alt={name} className="h-48 w-full object-cover" src={imageUrl} />
-      </a>
+      <img
+        src={imageUrl}
+        alt={name}
+        className="h-48 w-full object-cover object-center"
+      />
       <div className="p-6">
-        <h3
-          className={`mb-2 text-xl font-semibold ${isDarkMode ? 'text-white' : 'text-gray-800'}`}
-        >
-          {name}
-        </h3>
+        <h3 className="mb-2 text-2xl font-bold">{name}</h3>
         <p
           className={`mb-4 text-sm ${isDarkMode ? 'text-gray-300' : 'text-gray-600'}`}
         >
@@ -43,30 +42,38 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
         <div className="mb-4 flex flex-wrap gap-2">
           {techStack.map((tech, index) => (
             <span
-              className={`rounded-full px-2 py-1 text-xs ${isDarkMode ? 'bg-gray-700 text-gray-300' : 'bg-gray-200 text-gray-700'} `}
               key={index}
+              className={`rounded-full px-2 py-1 text-xs ${
+                isDarkMode
+                  ? 'bg-gray-700 text-gray-300'
+                  : 'bg-gray-200 text-gray-700'
+              }`}
             >
               {tech}
             </span>
           ))}
         </div>
-        <div className="flex items-center justify-between">
+        <div className="mt-4 flex items-center justify-between">
           <a
-            className={`flex items-center ${isDarkMode ? 'text-blue-400' : 'text-blue-600'} hover:underline`}
             href={githubLink}
-            rel="noopener noreferrer"
             target="_blank"
+            rel="noopener noreferrer"
+            className={`flex items-center ${
+              isDarkMode ? 'text-blue-400' : 'text-blue-600'
+            } hover:underline`}
           >
             <FaGithub className="mr-1" />
-            <span className="text-sm">GitHub</span>
+            <span>GitHub</span>
           </a>
           <a
-            className={`flex items-center ${isDarkMode ? 'text-blue-400' : 'text-blue-600'} hover:underline`}
             href={projectLink}
-            rel="noopener noreferrer"
             target="_blank"
+            rel="noopener noreferrer"
+            className={`flex items-center ${
+              isDarkMode ? 'text-blue-400' : 'text-blue-600'
+            } hover:underline`}
           >
-            <span className="text-sm">Live Demo</span>
+            <span>Live Demo</span>
             <FaExternalLinkAlt className="ml-1" />
           </a>
         </div>
