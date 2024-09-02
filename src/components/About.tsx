@@ -47,7 +47,7 @@ const About: React.FC = () => {
           </div>
           <h1 className="text-center text-2xl font-bold">
             checkout my{' '}
-            <Link to="/projects" className="hover:text-blue-600">
+            <Link className="hover:text-blue-600" to="/projects">
               projects
             </Link>
           </h1>
