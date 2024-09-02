@@ -41,14 +41,15 @@ const About: React.FC = () => {
     >
       <div className="flex items-start justify-center">
         <div className="mt-20 w-full space-y-6">
-          <h1 className={`text-center text-7xl font-bold text-blue-600`}>
-            about me
-          </h1>
+          <h1 className={`text-center text-7xl font-bold`}>about me</h1>
           <div className="flex flex-col items-center justify-center space-y-8">
             <Timeline events={timelineEvents} />
           </div>
           <h1 className="text-center text-2xl font-bold">
-            checkout my <Link to="/projects">projects</Link>
+            checkout my{' '}
+            <Link to="/projects" className="hover:text-blue-600">
+              projects
+            </Link>
           </h1>
         </div>
       </div>
