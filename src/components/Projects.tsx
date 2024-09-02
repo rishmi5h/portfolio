@@ -67,18 +67,21 @@ const Projects: React.FC = () => {
     },
     // Add more projects as needed
   ];
-
   return (
     <div
-      className={`min-h-[80vh] py-12 ${isDarkMode ? darkModeColor : lightModeColor} transition-colors duration-300`}
+      className={`min-h-screen py-16 ${
+        isDarkMode ? darkModeColor : lightModeColor
+      } transition-colors duration-300`}
     >
       <div className="container mx-auto px-4">
         <h1
-          className={`mb-8 text-center text-3xl font-bold ${isDarkMode ? 'text-white' : 'text-gray-800'}`}
+          className={`mb-12 text-center text-4xl font-bold ${
+            isDarkMode ? 'text-white' : 'text-gray-800'
+          }`}
         >
-          my projects
+          My Projects
         </h1>
-        <div className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
+        <div className="grid grid-cols-1 gap-8 md:grid-cols-2">
           {projects.map((project, index) => (
             <ProjectCard key={index} {...project} />
           ))}
@@ -87,5 +90,4 @@ const Projects: React.FC = () => {
     </div>
   );
 };
-
 export default Projects;
