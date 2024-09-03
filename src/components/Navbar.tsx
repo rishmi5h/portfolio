@@ -5,7 +5,6 @@ import {
   darkModeTextColor,
   lightModeColor,
   lightModeTextColor,
-  navLinkColor,
 } from '../constants/colors.tsx';
 import { useTheme } from '../contexts/ThemeContext.tsx';
 
