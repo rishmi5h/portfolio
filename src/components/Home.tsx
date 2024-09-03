@@ -42,6 +42,7 @@ const Home = () => {
               software engineer - India
             </p>
             <button
+              aria-label="View Resume"
               className="inline-flex items-center rounded-full bg-pink-600 px-4 py-2 font-bold text-white hover:bg-pink-700"
               onClick={handleButtonClick}
             >

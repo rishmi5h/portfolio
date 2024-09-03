@@ -25,7 +25,13 @@ const Navbar = () => {
           </Link>
         </h1>
         <div>
-          <button className="p-2 text-2xl text-gray-500" onClick={toggleTheme}>
+          <button
+            aria-label={
+              isDarkMode ? 'Switch to Light Mode' : 'Switch to Dark Mode'
+            }
+            className="p-2 text-2xl text-gray-500"
+            onClick={toggleTheme}
+          >
             {isDarkMode ? <FaSun /> : <FaMoon />}
           </button>
         </div>
