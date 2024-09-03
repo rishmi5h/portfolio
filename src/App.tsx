@@ -1,3 +1,4 @@
+import { Helmet } from 'react-helmet';
 import { Route, BrowserRouter as Router, Routes } from 'react-router-dom';
 import About from './components/About.tsx';
 import Contact from './components/Contact.tsx';
@@ -13,6 +14,15 @@ export default function App() {
   return (
     <ThemeProvider>
       <Router>
+        <Helmet>
+          <title>Rishabh Mishra | Portfolio</title>
+          <meta
+            content="Rishabh Mishra's personal portfolio showcasing web development projects and skills."
+            name="description"
+          />
+          <meta content="index, follow" name="robots" />
+          <link href="https://rishmi5h.com" rel="canonical" />
+        </Helmet>
         <div className="flex min-h-screen flex-col">
           <CustomCursor />
           <Navbar />
