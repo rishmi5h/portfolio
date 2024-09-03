@@ -53,20 +53,21 @@ const Home = () => {
       </div>
 
       {showPopup && (
-        <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50">
+        <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 p-4">
           <div
-            className={`rounded-lg p-6 shadow-lg ${isDarkMode ? 'bg-gray-800 text-white' : 'bg-white text-black'} w-full max-w-lg md:max-w-2xl`}
+            className={`rounded-lg p-4 shadow-lg sm:p-6 ${isDarkMode ? 'bg-gray-800 text-white' : 'bg-white text-black'} w-full max-w-sm sm:max-w-lg md:max-w-2xl`}
           >
-            <h2 className="mb-4 text-center text-2xl font-bold">Resume</h2>
+            <h2 className="mb-2 text-center text-xl font-bold sm:mb-4 sm:text-2xl">
+              Resume
+            </h2>
             <iframe
               src="/assets/resume.pdf"
-              width="100%"
-              height="400"
+              className="h-[300px] w-full sm:h-[400px]"
               title="Resume PDF"
             ></iframe>
-            <div className="mt-4 flex justify-center">
+            <div className="mt-2 flex justify-center sm:mt-4">
               <button
-                className="mt-4 inline-flex items-center rounded-full bg-red-600 px-4 py-2 font-bold text-white hover:bg-red-700"
+                className="mt-2 inline-flex items-center rounded-full bg-red-600 px-3 py-1 text-sm font-bold text-white hover:bg-red-700 sm:mt-4 sm:px-4 sm:py-2 sm:text-base"
                 onClick={handleClosePopup}
               >
                 Close
