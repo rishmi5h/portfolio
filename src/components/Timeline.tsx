@@ -74,8 +74,6 @@ interface TimelineProps {
 }
 
 const Timeline: React.FC<TimelineProps> = ({ events }) => {
-  const { isDarkMode } = useTheme();
-
   return (
     <div className="container mx-auto px-4 py-8">
       <div className="relative">
