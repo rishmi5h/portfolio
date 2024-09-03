@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { darkModeColor, lightModeColor } from '../constants/colors.tsx';
 import { useTheme } from '../contexts/ThemeContext.tsx';
 import ProjectCard from './ProjectCard.tsx';
@@ -61,6 +61,25 @@ const Projects: React.FC = () => {
     },
     // Add more projects as needed
   ];
+
+  useEffect(() => {
+    projects.forEach((project) => {
+      const link = document.createElement('link');
+      link.rel = 'preload';
+      link.as = 'image';
+      link.href = project.imageUrl;
+      document.head.appendChild(link);
+    });
+
+    return () => {
+      // Clean up preload links when component unmounts
+      const preloadLinks = document.head.querySelectorAll(
+        'link[rel="preload"][as="image"]',
+      );
+      preloadLinks.forEach((link) => document.head.removeChild(link));
+    };
+  }, []);
+
   return (
     <div
       className={`min-h-screen py-16 ${
@@ -84,4 +103,5 @@ const Projects: React.FC = () => {
     </div>
   );
 };
+
 export default Projects;
