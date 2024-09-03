@@ -61,8 +61,8 @@ const Home = () => {
               Resume
             </h2>
             <iframe
-              src="/assets/resume.pdf"
               className="h-[300px] w-full sm:h-[400px]"
+              src="/assets/resume.pdf"
               title="Resume PDF"
             ></iframe>
             <div className="mt-2 flex justify-center sm:mt-4">
