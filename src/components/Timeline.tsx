@@ -46,8 +46,8 @@ const TimelineEvent: React.FC<TimelineEventProps> = ({
         >
           {skill.split(', ').map((s, index) => (
             <span
-              className={` ${isLeft ? 'ml-2' : 'mr-2'} rounded-full px-2 py-1 ${isDarkMode ? 'bg-gray-700 text-gray-300' : 'bg-gray-200 text-gray-700'}}`}
               key={index}
+              className={` ${isLeft ? 'ml-2' : 'mr-2'} rounded-full px-2 py-1 ${isDarkMode ? 'bg-gray-700 text-gray-300' : 'bg-gray-200 text-gray-700'}}`}
             >
               {s}
             </span>
