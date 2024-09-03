@@ -59,10 +59,10 @@ const Home = () => {
           >
             <h2 className="mb-4 text-center text-2xl font-bold">Resume</h2>
             <iframe
-              allow="autoplay"
-              height="400"
-              src="https://drive.google.com/file/d/1Ib1pmRoX6d3bR9HPcJvQVNQBlI2Qe73j/preview"
+              src="/assets/resume.pdf"
               width="100%"
+              height="400"
+              title="Resume PDF"
             ></iframe>
             <div className="mt-4 flex justify-center">
               <button
