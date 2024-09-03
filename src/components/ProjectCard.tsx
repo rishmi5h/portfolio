@@ -28,9 +28,9 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
       }`}
     >
       <img
-        src={imageUrl}
         alt={name}
         className="h-48 w-full object-cover object-center"
+        src={imageUrl}
       />
       <div className="p-6">
         <h3 className="mb-2 text-2xl font-bold">{name}</h3>
@@ -42,12 +42,12 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
         <div className="mb-4 flex flex-wrap gap-2">
           {techStack.map((tech, index) => (
             <span
-              key={index}
               className={`rounded-full px-2 py-1 text-xs ${
                 isDarkMode
                   ? 'bg-gray-700 text-gray-300'
                   : 'bg-gray-200 text-gray-700'
               }`}
+              key={index}
             >
               {tech}
             </span>
@@ -55,23 +55,23 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
         </div>
         <div className="mt-4 flex items-center justify-between">
           <a
-            href={githubLink}
-            target="_blank"
-            rel="noopener noreferrer"
             className={`flex items-center ${
               isDarkMode ? 'text-blue-400' : 'text-blue-600'
             } hover:underline`}
+            href={githubLink}
+            target="_blank"
+            rel="noopener noreferrer"
           >
             <FaGithub className="mr-1" />
             <span>GitHub</span>
           </a>
           <a
-            href={projectLink}
-            target="_blank"
-            rel="noopener noreferrer"
             className={`flex items-center ${
               isDarkMode ? 'text-blue-400' : 'text-blue-600'
             } hover:underline`}
+            href={projectLink}
+            target="_blank"
+            rel="noopener noreferrer"
           >
             <span>Live Demo</span>
             <FaExternalLinkAlt className="ml-1" />

@@ -68,7 +68,7 @@ const Projects: React.FC = () => {
       link.rel = 'preload';
       link.as = 'image';
       link.href = project.imageUrl;
-      document.head.appendChild(link);
+      document.head.append(link);
     });
 
     return () => {
@@ -78,7 +78,7 @@ const Projects: React.FC = () => {
       );
       preloadLinks.forEach((link) => document.head.removeChild(link));
     };
-  }, []);
+  }, [projects]);
 
   return (
     <div
