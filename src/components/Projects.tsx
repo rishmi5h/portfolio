@@ -78,7 +78,7 @@ const Projects: React.FC = () => {
       );
       preloadLinks.forEach((link) => document.head.removeChild(link));
     };
-  }, [projects]);
+  });
 
   return (
     <div

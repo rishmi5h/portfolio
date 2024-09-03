@@ -59,8 +59,8 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
               isDarkMode ? 'text-blue-400' : 'text-blue-600'
             } hover:underline`}
             href={githubLink}
-            target="_blank"
             rel="noopener noreferrer"
+            target="_blank"
           >
             <FaGithub className="mr-1" />
             <span>GitHub</span>
@@ -70,8 +70,8 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
               isDarkMode ? 'text-blue-400' : 'text-blue-600'
             } hover:underline`}
             href={projectLink}
-            target="_blank"
             rel="noopener noreferrer"
+            target="_blank"
           >
             <span>Live Demo</span>
             <FaExternalLinkAlt className="ml-1" />
