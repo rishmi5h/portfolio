@@ -17,6 +17,14 @@ const Projects: React.FC = () => {
       techStack: ['Spring Boot', 'React', 'Tailwind CSS', 'MySQL', 'AWS S3'],
     },
     {
+      description: 'Portfolio website but themed like a terminal. ',
+      githubLink: 'https://github.com/rishmi5h/terminal',
+      imageUrl: 'assets/terminal.webp',
+      name: 'Terminal - Portfolio',
+      projectLink: 'https://terminal.rishmi5h.com/',
+      techStack: ['React', 'Tailwind CSS', 'TypeScript', 'Vite', 'Netlify'],
+    },
+    {
       description:
         'ΣUI is a Component Library that helps in building UI faster and easier. ',
       githubLink: 'https://github.com/rishmi5h/Sigma-UI',
