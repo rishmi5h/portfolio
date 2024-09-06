@@ -10,7 +10,6 @@ This is a personal portfolio website showcasing Rishabh Mishra's projects and sk
 - Project showcase with live demo and GitHub links
 - Resume viewer
 - About page with timeline of experiences
-- Contact form
 
 ## Technologies Used
 
