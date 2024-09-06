@@ -3,6 +3,7 @@ import { Route, BrowserRouter as Router, Routes } from 'react-router-dom';
 import About from './components/About.tsx';
 import Contact from './components/Contact.tsx';
 import CustomCursor from './components/CustomCursor.tsx';
+import { useKonamiCode } from './components/EasterEggs.tsx';
 import Footer from './components/Footer.tsx';
 import Home from './components/Home.tsx';
 import Interesting from './components/Interesting.tsx';
@@ -11,9 +12,16 @@ import Projects from './components/Projects.tsx';
 import { ThemeProvider } from './contexts/ThemeContext.tsx';
 
 export default function App() {
+  const konamiCodeSuccess = useKonamiCode();
+
   return (
     <ThemeProvider>
       <Router>
+        {konamiCodeSuccess && (
+          <div className="fixed left-0 top-0 z-50 w-full bg-green-500 py-2 text-center text-white">
+            Congratulations! You&apos;ve unlocked the Konami code!
+          </div>
+        )}
         <Helmet>
           <title>Rishabh Mishra | Portfolio</title>
           <meta
