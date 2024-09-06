@@ -1,51 +1,69 @@
-# Starter Kit for Vite, React, TypeScript, Tailwind and Node.js ESM
+# Rishabh Mishra's Portfolio
 
-_Minimal, sensible defaults, fast._
+This is a personal portfolio website showcasing Rishabh Mishra's projects and skills as a software engineer. The website features a modern, responsive design with a dark/light mode toggle and a custom cursor.
 
-Read [the blog post about this template](https://cpojer.net/posts/fastest-frontend-tooling-in-2022).
+## Features
 
-## Technologies
+- Responsive design for mobile and desktop
+- Dark/light mode toggle
+- Custom cursor (on desktop)
+- Project showcase with live demo and GitHub links
+- Resume viewer
+- About page with timeline of experiences
+- Contact form
 
-- [Vite](https://vitejs.dev/)
+## Technologies Used
+
 - [React](https://reactjs.org/)
 - [TypeScript](https://www.typescriptlang.org)
-- [Tailwind](https://tailwindcss.com/)
-- [pnpm](https://pnpm.io/ja/) (_Optional_)
+- [Vite](https://vitejs.dev/)
+- [Tailwind CSS](https://tailwindcss.com/)
+- [React Router](https://reactrouter.com/)
+- [React Helmet](https://github.com/nfl/react-helmet)
+- [Framer Motion](https://www.framer.com/motion/)
+- [React Icons](https://react-icons.github.io/react-icons/)
 
-![screenshot of `App.tsx`](./screenshot.png)
+## Setup and Installation
 
-## Setup
+1. Clone the repository
+2. Install dependencies:
+   ```
+   pnpm install
+   ```
+   (or `npm install` if you don't use `pnpm`)
+3. Run the development server:
+   ```
+   pnpm dev
+   ```
+4. Open [http://localhost:5173](http://localhost:5173) in your browser
 
-- Press the "Use this template" on the top of this repository's GitHub page.
-- Run `pnpm install` (or `npm install` if you don't use `pnpm`).
-- `pnpm dev` for development.
-- Use `pnpm test` to run tests.
-- `pnpm build` for production builds.
+## Building for Production
 
-_Note: You can install `pnpm` via `homebrew` on macOS: `brew install pnpm`._
-
-## Protips for the fastest Developer Experience
-
-- Use [`npm-run-all`](https://github.com/mysticatea/npm-run-all) to parallelize local test runs.
-- Prettier and eslint have `--cache` flags. Use them!
-- Do not run prettier inside of `eslint`. It commonly takes 50% of the eslint runtime!
-- Automatically sort imports when running prettier/saving the document via [`@ianvs/prettier-plugin-sort-imports`](https://github.com/ianvs/prettier-plugin-sort-imports).
-- Use `swc` with `ts-node` for fast node scripts with [ESM](https://hacks.mozilla.org/2018/03/es-modules-a-cartoon-deep-dive/). See below ↓
-
-## Run node scripts with ESM and TypeScript, fast.
-
-Create a `script.ts` file, run `chmod x script.ts` and execute it via `./script.ts`.
+To create a production build, run:
 
 ```
-#!/usr/bin/env node --no-warnings --experimental-specifier-resolution=node --loader ts-node/esm
-
-console.log('Your code goes here.');
+pnpm build
 ```
 
-Use this to restart your scripts instantly when a file changes:
+The built files will be in the `dist` directory.
 
-```
-#!/usr/bin/env NODE_ENV=development node --watch --no-warnings --experimental-specifier-resolution=node --loader ts-node/esm
+## Key Components
 
-console.log('This processes instantly restarts when a file changes');
-```
+- `Home`: Landing page with brief introduction and resume viewer
+- `About`: Page with timeline of experiences
+- `Projects`: Showcase of projects with descriptions and links
+- `Navbar`: Navigation bar with theme toggle
+- `Footer`: Footer with social links
+- `CustomCursor`: Custom cursor component for desktop view
+
+## Deployment
+
+This project is set up for easy deployment on platforms like Netlify or Vercel. Simply connect your GitHub repository to your preferred platform and follow their deployment instructions.
+
+## Contributing
+
+While this is a personal portfolio project, suggestions and feedback are welcome. Please open an issue to discuss any changes you'd like to propose.
+
+## License
+
+This project is open source and available under the [MIT License](LICENSE).
