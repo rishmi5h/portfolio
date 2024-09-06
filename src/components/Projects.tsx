@@ -9,7 +9,7 @@ const Projects: React.FC = () => {
   const projects = [
     {
       description:
-        'Imagery is a image management service that allows you to upload, store, and edit your images. ',
+        'Imagery is a image management service that allows you to upload, store and edit your images. ',
       githubLink: 'https://github.com/rishmi5h/image-processing-service',
       imageUrl: 'assets/imagery.webp',
       name: 'Imagery - Image management',
