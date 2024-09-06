@@ -7,9 +7,11 @@ import {
   lightModeTextColor,
 } from '../constants/colors.tsx';
 import { useTheme } from '../contexts/ThemeContext.tsx';
+import { useLogoClickSequence } from './EasterEggs.tsx';
 
 const Navbar = () => {
   const { isDarkMode, toggleTheme } = useTheme();
+  const { handleClick, success } = useLogoClickSequence();
 
   return (
     <nav
@@ -17,7 +19,8 @@ const Navbar = () => {
     >
       <div className="container mx-auto flex items-center justify-between px-4 py-4">
         <h1
-          className={`text-2xl font-bold hover:text-blue-600 ${isDarkMode ? darkModeTextColor : lightModeTextColor}`}
+          className={`text-2xl font-bold hover:text-blue-600 ${isDarkMode ? darkModeTextColor : lightModeTextColor} ${success ? 'text-rainbow animate-rainbow' : ''}`}
+          onClick={handleClick}
         >
           <Link to="/">
             rishmi
