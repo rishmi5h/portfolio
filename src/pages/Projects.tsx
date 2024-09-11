@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
+import ProjectCard from '../components/ProjectCard.tsx';
 import { darkModeColor, lightModeColor } from '../constants/colors.tsx';
 import { useTheme } from '../contexts/ThemeContext.tsx';
-import ProjectCard from './ProjectCard.tsx';
 
 const Projects: React.FC = () => {
   const { isDarkMode } = useTheme();

@@ -1,15 +1,15 @@
 import { Helmet } from 'react-helmet';
 import { Route, BrowserRouter as Router, Routes } from 'react-router-dom';
-import About from './components/About.tsx';
 import Contact from './components/Contact.tsx';
 import CustomCursor from './components/CustomCursor.tsx';
 import { useKonamiCode } from './components/EasterEggs.tsx';
 import Footer from './components/Footer.tsx';
-import Home from './components/Home.tsx';
 import Interesting from './components/Interesting.tsx';
 import Navbar from './components/Navbar.tsx';
-import Projects from './components/Projects.tsx';
 import { ThemeProvider } from './contexts/ThemeContext.tsx';
+import About from './pages/About.tsx';
+import Home from './pages/Home.tsx';
+import Projects from './pages/Projects.tsx';
 
 export default function App() {
   const konamiCodeSuccess = useKonamiCode();
