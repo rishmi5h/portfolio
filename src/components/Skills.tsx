@@ -76,25 +76,25 @@ const Skills: React.FC = () => {
   };
 
   return (
-    <div className="mb-20 mt-20">
-      {/* <h2
-        className={`mb-12 text-center text-5xl font-bold ${
+    <div className="mb-20 mt-20 px-4">
+      <h2
+        className={`mb-12 text-center text-4xl font-bold sm:text-5xl ${
           isDarkMode ? 'text-blue-300' : 'text-gray-800'
         }`}
       >
-        My Toolkit
-      </h2> */}
+        my toolkit
+      </h2>
       <div className="flex justify-center">
         <motion.div
           animate="visible"
-          className="grid max-w-5xl grid-cols-2 gap-14 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5"
+          className="grid max-w-5xl grid-cols-2 gap-4 sm:grid-cols-3 sm:gap-6 md:grid-cols-4 md:gap-8 lg:grid-cols-5"
           initial="hidden"
           variants={containerVariants}
         >
           {skills.map((skill) => (
             <motion.div
               key={skill.name}
-              className={`flex flex-col items-center justify-center rounded-lg p-4 transition-all duration-300 ${
+              className={`flex flex-col items-center justify-center rounded-lg p-2 transition-all duration-300 sm:p-4 ${
                 isDarkMode
                   ? 'bg-gray-800 hover:bg-gray-700'
                   : 'bg-white hover:bg-gray-100'
@@ -102,14 +102,14 @@ const Skills: React.FC = () => {
               variants={itemVariants}
             >
               <skill.icon
-                className={`mb-3 text-5xl ${
+                className={`mb-2 text-3xl sm:text-4xl md:text-5xl ${
                   isDarkMode
                     ? 'text-blue-400 hover:text-blue-300'
                     : 'text-blue-600 hover:text-blue-500'
                 }`}
               />
               <span
-                className={`text-center text-sm font-semibold ${
+                className={`text-center text-xs font-semibold sm:text-sm ${
                   isDarkMode ? 'text-gray-300' : 'text-gray-700'
                 }`}
               >
