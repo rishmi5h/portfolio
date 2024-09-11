@@ -1,5 +1,5 @@
-import { motion } from 'framer-motion';
-import React from 'react';
+import { motion, useInView } from 'framer-motion';
+import React, { useEffect, useRef, useState } from 'react';
 import {
   FaAws,
   FaCss3,
@@ -56,6 +56,15 @@ const skills: Skill[] = [
 
 const Skills: React.FC = () => {
   const { isDarkMode } = useTheme();
+  const [hasAnimated, setHasAnimated] = useState(false);
+  const ref = useRef(null);
+  const isInView = useInView(ref, { amount: 'all', once: true });
+
+  useEffect(() => {
+    if (isInView && !hasAnimated) {
+      setHasAnimated(true);
+    }
+  }, [isInView, hasAnimated]);
 
   const containerVariants = {
     hidden: { opacity: 0 },
@@ -76,7 +85,7 @@ const Skills: React.FC = () => {
   };
 
   return (
-    <div className="mb-20 mt-20 px-4">
+    <div ref={ref} className="mb-20 mt-20 px-4">
       <h2
         className={`mb-12 text-center text-4xl font-bold sm:text-5xl ${
           isDarkMode ? 'text-blue-300' : 'text-gray-800'
@@ -86,7 +95,7 @@ const Skills: React.FC = () => {
       </h2>
       <div className="flex justify-center">
         <motion.div
-          animate="visible"
+          animate={isInView ? 'visible' : 'hidden'}
           className="grid max-w-5xl grid-cols-2 gap-4 sm:grid-cols-3 sm:gap-6 md:grid-cols-4 md:gap-8 lg:grid-cols-5"
           initial="hidden"
           variants={containerVariants}
