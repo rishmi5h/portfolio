@@ -38,7 +38,7 @@ export const projects = [
     githubLink: 'https://github.com/rishmi5h/30days-vanilla-js-challenge',
     imageUrl: 'assets/30-days-vanilla-js.webp',
     name: '30 days of vanilla JavaScript',
-    projectLink: 'https://vanilla-js-projects-101.netlify.app/',
+    projectLink: 'https://js-30.rishmi5h.com/',
     techStack: ['HTML', 'CSS', 'JavaScript'],
   },
   //   {
