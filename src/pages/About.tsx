@@ -1,5 +1,4 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 import Skills from '../components/Skills.tsx';
 import { Timeline } from '../components/Timeline.tsx';
 import { timelineEvents } from '../constants/timelineEvents.tsx';
@@ -10,7 +9,10 @@ const About: React.FC = () => {
 
   return (
     <div
-      className={`min-h-[80vh] ${isDarkMode ? 'darkModeColor text-white' : 'bg-white text-black'} transition-colors duration-300`}
+      className={`min-h-[80vh] ${
+        isDarkMode ? 'darkModeColor text-white' : 'bg-white text-black'
+      } transition-colors duration-300`}
+      id="about"
     >
       <div className="flex items-start justify-center">
         <div className="mt-20 w-full space-y-12">
@@ -19,12 +21,6 @@ const About: React.FC = () => {
             <Timeline events={timelineEvents} />
           </div>
           <Skills />
-          <h2 className="text-center text-2xl font-bold">
-            checkout my{' '}
-            <Link className="hover:text-blue-600" to="/projects">
-              projects
-            </Link>
-          </h2>
         </div>
       </div>
     </div>
