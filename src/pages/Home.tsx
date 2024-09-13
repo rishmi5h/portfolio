@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
-import { FiEye } from 'react-icons/fi';
-// import { Link } from 'react-router-dom';
+import { FiChevronDown, FiEye } from 'react-icons/fi';
 import { HashLink as Link } from 'react-router-hash-link';
 import { darkModeColor, lightModeColor } from '../constants/colors.tsx';
 import { useTheme } from '../contexts/ThemeContext.tsx';
@@ -52,6 +51,11 @@ const Home = () => {
               <FiEye className="h-4 w-4 font-bold" />
             </button>
           </div>
+        </div>
+        <div className="mt-8 flex justify-center">
+          <a className="animate-bounce" href="#about">
+            <FiChevronDown className="text-3xl text-blue-600" />
+          </a>
         </div>
       </div>
 
