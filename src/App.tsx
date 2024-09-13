@@ -39,13 +39,9 @@ export default function App() {
           <CustomCursor />
           <Navbar />
           <main className="flex-grow">
-            <Routes>
-              <Route element={<Home />} path="/" />
-              <Route element={<About />} path="/about" />
-              <Route element={<Projects />} path="/projects" />
-              <Route element={<Contact />} path="/contact" />
-              <Route element={<Interesting />} path="/interesting" />
-            </Routes>
+            <Home />
+            <About />
+            <Projects />
           </main>
           <Footer />
         </div>
