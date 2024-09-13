@@ -93,6 +93,7 @@ const Projects: React.FC = () => {
       className={`min-h-screen py-16 ${
         isDarkMode ? darkModeColor : lightModeColor
       } transition-colors duration-300`}
+      id="projects"
     >
       <div className="container mx-auto px-4">
         <h1
