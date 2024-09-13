@@ -97,12 +97,13 @@ const Skills: React.FC = () => {
         my toolkit
       </h2>
       <div className="flex justify-center">
-        <motion.div
+        {/* <motion.div
           animate={isInView ? 'visible' : 'hidden'}
           className="grid max-w-5xl grid-cols-2 gap-4 sm:grid-cols-3 sm:gap-6 md:grid-cols-4 md:gap-8 lg:grid-cols-5"
           initial="hidden"
           variants={containerVariants}
-        >
+        > */}
+        <div className="grid max-w-5xl grid-cols-2 gap-4 sm:grid-cols-3 sm:gap-6 md:grid-cols-4 md:gap-8 lg:grid-cols-5">
           {skills.map((skill) => (
             <motion.div
               key={skill.name}
@@ -129,7 +130,8 @@ const Skills: React.FC = () => {
               </span>
             </motion.div>
           ))}
-        </motion.div>
+        </div>
+        {/* </motion.div> */}
       </div>
     </div>
   );
