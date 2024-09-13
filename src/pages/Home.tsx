@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { FiChevronDown, FiEye } from 'react-icons/fi';
+import { FiEye } from 'react-icons/fi';
 import { HashLink as Link } from 'react-router-hash-link';
 import { darkModeColor, lightModeColor } from '../constants/colors.tsx';
 import { useTheme } from '../contexts/ThemeContext.tsx';
@@ -54,7 +54,34 @@ const Home = () => {
         </div>
         <div className="mt-2 flex justify-center">
           <a className="animate-bounce" href="#about">
-            <FiChevronDown className="text-3xl text-blue-600" />
+            <svg
+              className={`h-10 w-10 text-blue-600 ${isDarkMode ? 'text-gray-300' : 'text-gray-700'}`}
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <rect
+                fill="none"
+                height="21"
+                rx="8"
+                ry="8"
+                stroke="currentColor"
+                strokeWidth="2"
+                width="16"
+                x="4"
+                y="2"
+              ></rect>
+              <circle cx="12" cy="8" fill="currentColor" r="1"></circle>
+              <circle cx="12" cy="12" fill="currentColor" r="1"></circle>
+              <path
+                d="M8 16l4 4 4-4"
+                fill="none"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth="2"
+              ></path>
+            </svg>
           </a>
         </div>
       </div>
