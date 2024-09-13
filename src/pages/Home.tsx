@@ -52,7 +52,7 @@ const Home = () => {
             </button>
           </div>
         </div>
-        <div className="mt-8 flex justify-center">
+        <div className="mt-2 flex justify-center">
           <a className="animate-bounce" href="#about">
             <FiChevronDown className="text-3xl text-blue-600" />
           </a>
