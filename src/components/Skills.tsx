@@ -91,7 +91,7 @@ const Skills: React.FC = () => {
     <div ref={ref} className="mb-20 mt-20 px-4">
       <h2
         className={`mb-12 text-center text-4xl font-bold sm:text-5xl ${
-          isDarkMode ? 'text-blue-300' : 'text-gray-800'
+          isDarkMode ? 'text-white' : 'text-gray-800'
         }`}
       >
         my toolkit
@@ -116,7 +116,7 @@ const Skills: React.FC = () => {
               <skill.icon
                 className={`mb-2 text-3xl sm:text-4xl md:text-5xl ${
                   isDarkMode
-                    ? 'text-blue-400 hover:text-blue-300'
+                    ? 'text-blue-400 hover:text-blue-500'
                     : 'text-blue-600 hover:text-blue-500'
                 }`}
               />
