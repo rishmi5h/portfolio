@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { FiEye } from 'react-icons/fi';
-import { Link } from 'react-router-dom';
+// import { Link } from 'react-router-dom';
+import { HashLink as Link } from 'react-router-hash-link';
 import { darkModeColor, lightModeColor } from '../constants/colors.tsx';
 import { useTheme } from '../contexts/ThemeContext.tsx';
 
@@ -20,6 +21,7 @@ const Home = () => {
     <>
       <div
         className={` ${isDarkMode ? darkModeColor : lightModeColor} transition-colors duration-300`}
+        id="home"
       >
         <div className="flex min-h-[88vh] items-center justify-center">
           <div className="space-y-6 text-center">
@@ -28,7 +30,7 @@ const Home = () => {
             >
               <Link
                 className="border-b border-dotted border-current hover:text-blue-600"
-                to="/about"
+                to="#about"
               >
                 who am i ?
               </Link>
