@@ -56,7 +56,7 @@ export const projects = [
     githubLink: 'https://github.com/rishmi5h/know-the-flags',
     imageUrl: 'assets/know-the-flags.webp',
     name: 'Know The Flags',
-    projectLink: 'https://flags-emoji.netlify.app/',
+    projectLink: 'https://flags.rishmi5h.com/',
     techStack: ['React', 'Tailwind CSS'],
   },
   // Add more projects as needed
