@@ -71,7 +71,7 @@ const Skills: React.FC = () => {
     visible: {
       opacity: 1,
       transition: {
-        staggerChildren: 0.1,
+        staggerChildren: 0.05, // Reduced from 0.1 to 0.05
       },
     },
   };
@@ -80,6 +80,9 @@ const Skills: React.FC = () => {
     hidden: { opacity: 0, y: 20 },
     visible: {
       opacity: 1,
+      transition: {
+        duration: 0.2, // Reduced from default to 0.2
+      },
       y: 0,
     },
   };
