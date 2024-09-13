@@ -101,7 +101,7 @@ const Projects: React.FC = () => {
             isDarkMode ? 'text-white' : 'text-gray-800'
           }`}
         >
-          My Projects
+          my projects
         </h1>
         <div className="grid grid-cols-1 gap-8 md:grid-cols-2">
           {projects.map((project, index) => (
