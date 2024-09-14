@@ -13,7 +13,7 @@ export const timelineEvents = [
       'Build incident management webapp using React and collaborated with backend developers.',
     location: 'Remote',
     skill: 'react, html, css, javascript, tailwind',
-    title: 'Software Engineer Trainee - Incture Technologies',
+    title: 'Software Engineer Trainee - Incture',
     year: '2021/06 - 2021/09',
   },
   {
