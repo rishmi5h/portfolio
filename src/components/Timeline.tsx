@@ -31,17 +31,17 @@ const TimelineEvent: React.FC<TimelineEventProps> = ({
         >
           {year}
         </div>
-        <div
+        {/* <div
           className={`mb-1 ${isDarkMode ? 'text-gray-300' : 'text-gray-600'}`}
         >
           {description}
-        </div>
+        </div> */}
         <div
           className={`mb-2 text-sm ${isDarkMode ? 'text-gray-400' : 'text-gray-500'} mt-1`}
         >
           {location}
         </div>
-        <div
+        {/* <div
           className={`mt-2 flex flex-wrap text-sm ${isLeft ? 'justify-end' : 'justify-start'}`}
         >
           {skill.split(', ').map((s, index) => (
@@ -52,7 +52,7 @@ const TimelineEvent: React.FC<TimelineEventProps> = ({
               {s}
             </span>
           ))}
-        </div>
+        </div> */}
       </div>
       <div className="flex w-2/12 justify-center">
         <div
