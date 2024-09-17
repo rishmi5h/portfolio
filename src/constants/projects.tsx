@@ -23,7 +23,7 @@ export const projects = [
     imageUrl: 'assets/sigma-ui.webp',
     name: 'Sigma UI - Component Library',
     projectLink: 'https://sigma-ui.rishmi5h.com/',
-    techStack: ['HTML', 'CSS', 'JavaScript', 'Tailwind CSS'],
+    techStack: ['HTML', 'CSS', 'JavaScript'],
   },
   {
     description: 'E-commerce for black color apparels',
