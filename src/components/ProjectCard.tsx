@@ -24,16 +24,18 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
   return (
     <div
       className={`h-full overflow-hidden rounded-lg shadow-lg transition-all duration-300 ${
-        isDarkMode 
-          ? 'bg-gray-800 text-white hover:bg-gray-700' 
+        isDarkMode
+          ? 'bg-gray-800 text-white hover:bg-gray-700'
           : 'bg-white text-gray-800 hover:shadow-2xl'
       }`}
     >
-      <img
-        alt={name}
-        className="h-48 w-full object-cover object-center"
-        src={imageUrl}
-      />
+      <a href={projectLink} rel="noopener noreferrer" target="_blank">
+        <img
+          alt={name}
+          className="h-48 w-full cursor-pointer object-cover object-center transition-opacity duration-300 hover:opacity-80"
+          src={imageUrl}
+        />
+      </a>
       <div className="p-6">
         <h3 className="mb-2 text-2xl font-bold">{name}</h3>
         <p
