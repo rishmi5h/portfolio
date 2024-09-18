@@ -33,14 +33,6 @@ export const projects = [
     projectLink: 'https://bu.rishmi5h.com/',
     techStack: ['Next.js', 'Tailwind CSS', 'TypeScript', 'Pnpm'],
   },
-  // {
-  //   description: 'A fun website to ask your crush out on a date. ',
-  //   githubLink: 'https://github.com/rishmi5h/doyouwannagooutwithme',
-  //   imageUrl: 'assets/do-you-wanna-go-out.webp',
-  //   name: 'Do you wanna go out with me?',
-  //   projectLink: 'https://doyouwannagooutwith.rishmi5h.com/',
-  //   techStack: ['HTML', 'CSS', 'JavaScript'],
-  // },
   {
     description: 'Created 30 projects in 30 days using vanilla JavaScript. ',
     githubLink: 'https://github.com/rishmi5h/30days-vanilla-js-challenge',
@@ -49,16 +41,6 @@ export const projects = [
     projectLink: 'https://js-30.rishmi5h.com/',
     techStack: ['HTML', 'CSS', 'JavaScript'],
   },
-  //   {
-  //     description:
-  //       'Long short term memory (LSTM) based load forecasting for electricity demand',
-  //     githubLink: 'https://github.com/rishmi5h/final-year-project',
-  //     imageUrl: 'assets/lstm.webp',
-  //     name: 'LSTM based load forecasting',
-  //     projectLink:
-  //       'https://drive.google.com/file/d/1nBQQUfHQqdP92OzcVOUmt2RFXrVNy6Sf/view',
-  //     techStack: ['Machine Learning', 'Python', 'LSTM'],
-  //   },
   {
     description: 'A fun game to test your knowledge of flags.',
     githubLink: 'https://github.com/rishmi5h/know-the-flags',
