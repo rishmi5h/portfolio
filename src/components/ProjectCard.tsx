@@ -23,8 +23,10 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
 
   return (
     <div
-      className={`h-full overflow-hidden rounded-lg shadow-lg transition-all duration-300 hover:shadow-2xl ${
-        isDarkMode ? 'bg-gray-800 text-white' : 'bg-white text-gray-800'
+      className={`h-full overflow-hidden rounded-lg shadow-lg transition-all duration-300 ${
+        isDarkMode 
+          ? 'bg-gray-800 text-white hover:bg-gray-700' 
+          : 'bg-white text-gray-800 hover:shadow-2xl'
       }`}
     >
       <img
