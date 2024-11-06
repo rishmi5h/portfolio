@@ -8,14 +8,7 @@ export const projects = [
     projectLink: 'https://imagery.rishmi5h.com/',
     techStack: ['Spring Boot', 'React', 'Tailwind CSS', 'MySQL', 'AWS S3'],
   },
-  {
-    description: 'Portfolio website but themed like a terminal. ',
-    githubLink: 'https://github.com/rishmi5h/terminal',
-    imageUrl: 'assets/terminal.webp',
-    name: 'Terminal - Portfolio',
-    projectLink: 'https://terminal.rishmi5h.com/',
-    techStack: ['React', 'Tailwind CSS', 'TypeScript', 'Vite', 'Netlify'],
-  },
+
   {
     description:
       'ΣUI is a Component Library that helps in building UI faster and easier. ',
@@ -33,13 +26,18 @@ export const projects = [
     projectLink: 'https://bu.rishmi5h.com/',
     techStack: ['Next.js', 'Tailwind CSS', 'TypeScript', 'Pnpm'],
   },
+
+  // Add more projects as needed
+];
+
+export const funProjects = [
   {
-    description: 'Created 30 projects in 30 days using vanilla JavaScript. ',
-    githubLink: 'https://github.com/rishmi5h/30days-vanilla-js-challenge',
-    imageUrl: 'assets/30-days-vanilla-js.webp',
-    name: '30 days of vanilla JavaScript',
-    projectLink: 'https://js-30.rishmi5h.com/',
-    techStack: ['HTML', 'CSS', 'JavaScript'],
+    description: 'Portfolio website but themed like a terminal. ',
+    githubLink: 'https://github.com/rishmi5h/terminal',
+    imageUrl: 'assets/terminal.webp',
+    name: 'Terminal - Portfolio',
+    projectLink: 'https://terminal.rishmi5h.com/',
+    techStack: ['React', 'Tailwind CSS', 'TypeScript', 'Vite', 'Netlify'],
   },
   {
     description: 'A fun game to test your knowledge of flags.',
@@ -49,5 +47,12 @@ export const projects = [
     projectLink: 'https://flags.rishmi5h.com/',
     techStack: ['React', 'Tailwind CSS'],
   },
-  // Add more projects as needed
+  {
+    description: 'Created 30 projects in 30 days using vanilla JavaScript. ',
+    githubLink: 'https://github.com/rishmi5h/30days-vanilla-js-challenge',
+    imageUrl: 'assets/30-days-vanilla-js.webp',
+    name: '30 days of vanilla JavaScript',
+    projectLink: 'https://js-30.rishmi5h.com/',
+    techStack: ['HTML', 'CSS', 'JavaScript'],
+  },
 ];

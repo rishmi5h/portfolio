@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import ProjectCard from '../components/ProjectCard.tsx';
 import { darkModeColor, lightModeColor } from '../constants/colors.tsx';
-import { projects } from '../constants/projects.tsx';
+import { funProjects, projects } from '../constants/projects.tsx';
 import { useTheme } from '../contexts/ThemeContext.tsx';
 
 const Projects: React.FC = () => {
@@ -43,6 +43,19 @@ const Projects: React.FC = () => {
         <div className="mt-12 grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3">
           {projects.map((project, index) => (
             <ProjectCard key={index} {...project} />
+          ))}
+        </div>
+        <h2
+          className={`mb-12 mt-32 text-center text-3xl font-bold ${
+            isDarkMode ? 'text-white' : 'text-gray-800'
+          }`}
+        >
+          fun projects
+        </h2>
+
+        <div className="mt-12 grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3">
+          {funProjects.map((project, index) => (
+            <ProjectCard key={`fun-${index}`} {...project} />
           ))}
         </div>
       </div>
