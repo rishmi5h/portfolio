@@ -5,7 +5,7 @@ export const timelineEvents = [
     location: 'Hyderabad, India',
     skill:
       'java, springboot, react, docker, airflow, typescript, tailwind, python',
-    title: 'Software Engineer - Optum',
+    title: 'Senior Software Engineer - Optum',
     year: '2021/10 - Current',
   },
   {
