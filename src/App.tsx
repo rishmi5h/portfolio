@@ -10,6 +10,7 @@ import { ThemeProvider } from './contexts/ThemeContext.tsx';
 import About from './pages/About.tsx';
 import Home from './pages/Home.tsx';
 import Projects from './pages/Projects.tsx';
+import Roast from './pages/Roast.tsx';
 
 export default function App() {
   const konamiCodeSuccess = useKonamiCode();
@@ -39,9 +40,19 @@ export default function App() {
           <CustomCursor />
           <Navbar />
           <main className="flex-grow">
-            <Home />
-            <About />
-            <Projects />
+            <Routes>
+              <Route path="/roast" element={<Roast />} />
+              <Route
+                path="/"
+                element={
+                  <>
+                    <Home />
+                    <About />
+                    <Projects />
+                  </>
+                }
+              />
+            </Routes>
           </main>
           <Footer />
         </div>
