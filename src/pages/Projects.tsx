@@ -27,10 +27,11 @@ const Projects: React.FC = () => {
 
   return (
     <div
-      className={`min-h-screen py-16 ${
+      className={`min-h-screen py-20 ${
         isDarkMode ? darkModeColor : lightModeColor
       } transition-colors duration-300`}
       id="projects"
+      style={{ scrollSnapAlign: 'start', scrollSnapStop: 'always' }}
     >
       <div className="container mx-auto px-4">
         <h1

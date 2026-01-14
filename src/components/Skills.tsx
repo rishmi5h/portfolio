@@ -89,13 +89,6 @@ const Skills: React.FC = () => {
 
   return (
     <div ref={ref} className="mb-20 mt-20 px-4">
-      <h2
-        className={`mb-12 text-center text-4xl font-bold sm:text-5xl ${
-          isDarkMode ? 'text-white' : 'text-gray-800'
-        }`}
-      >
-        my toolkit
-      </h2>
       <div className="flex justify-center">
         {/* <motion.div
           animate={isInView ? 'visible' : 'hidden'}
