@@ -16,16 +16,31 @@ import Skills from './pages/Skills.tsx';
 
 export default function App() {
   const konamiCodeSuccess = useKonamiCode();
+  const [scrollSnapEnabled, setScrollSnapEnabled] = React.useState(false);
 
   React.useEffect(() => {
-    document.documentElement.style.scrollSnapType = 'y proximity';
+    // Scroll to top on mount
+    window.scrollTo(0, 0);
+
+    // Keep scroll snap disabled initially
+    document.documentElement.style.scrollSnapType = 'none';
     document.documentElement.style.scrollBehavior = 'smooth';
 
-    return () => {
-      document.documentElement.style.scrollSnapType = '';
-      document.documentElement.style.scrollBehavior = '';
+    // Enable scroll snap on first user scroll
+    const handleScroll = () => {
+      if (!scrollSnapEnabled) {
+        document.documentElement.style.scrollSnapType = 'y proximity';
+        setScrollSnapEnabled(true);
+        window.removeEventListener('scroll', handleScroll);
+      }
     };
-  }, []);
+
+    window.addEventListener('scroll', handleScroll);
+
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, [scrollSnapEnabled]);
 
   return (
     <ThemeProvider>

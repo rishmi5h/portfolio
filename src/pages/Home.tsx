@@ -63,7 +63,7 @@ const Home = () => {
           </button>
         </div>
         <div className="mt-16">
-          <a className="block animate-bounce" href="#about">
+          <a className="block animate-bounce" href="#roast">
             <svg
               className={`h-10 w-10 ${isDarkMode ? 'text-gray-300' : 'text-gray-700'}`}
               fill="none"
@@ -108,6 +108,7 @@ const Home = () => {
       {/* Roast Section */}
       <div
         className={`flex min-h-screen flex-col items-center justify-center transition-colors duration-300 ${isDarkMode ? darkModeColor : lightModeColor}`}
+        id="roast"
         style={{ scrollSnapAlign: 'start', scrollSnapStop: 'always' }}
       >
         <div className="max-w-2xl space-y-8 px-4 py-20 text-center">
@@ -171,6 +172,38 @@ const Home = () => {
               </button>
             </div>
           )}
+        </div>
+        <div className="mt-16 flex flex-col items-center space-y-6">
+          <a
+            href="#about"
+            className={`group relative inline-flex items-center gap-3 px-8 py-4 text-lg font-semibold transition-all duration-300 ${
+              isDarkMode
+                ? 'text-gray-300 hover:text-white'
+                : 'text-gray-700 hover:text-blue-600'
+            }`}
+          >
+            <span>Curious about my story?</span>
+            <svg
+              className={`h-5 w-5 transition-transform duration-300 group-hover:translate-x-1 ${
+                isDarkMode ? 'text-gray-400' : 'text-gray-500'
+              }`}
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth={2}
+                d="M13 7l5 5m0 0l-5 5m5-5H6"
+              />
+            </svg>
+          </a>
+          <div
+            className={`h-0.5 w-12 transition-all duration-300 group-hover:w-20 ${
+              isDarkMode ? 'bg-gray-600' : 'bg-blue-300'
+            }`}
+          />
         </div>
       </div>
     </>
