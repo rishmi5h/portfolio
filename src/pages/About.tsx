@@ -27,7 +27,7 @@ const About: React.FC = () => {
                 isDarkMode ? 'text-gray-400' : 'text-gray-600'
               }`}
             >
-              Jack of all trades, mastering some.
+              "Jack of all trades, mastering some"
             </p>
           </div>
         </div>
