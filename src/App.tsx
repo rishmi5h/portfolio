@@ -1,3 +1,4 @@
+import React from 'react';
 import { Helmet } from 'react-helmet';
 import { Route, BrowserRouter as Router, Routes } from 'react-router-dom';
 import Contact from './components/Contact.tsx';
@@ -11,9 +12,20 @@ import About from './pages/About.tsx';
 import Home from './pages/Home.tsx';
 import Projects from './pages/Projects.tsx';
 import Roast from './pages/Roast.tsx';
+import Skills from './pages/Skills.tsx';
 
 export default function App() {
   const konamiCodeSuccess = useKonamiCode();
+
+  React.useEffect(() => {
+    document.documentElement.style.scrollSnapType = 'y proximity';
+    document.documentElement.style.scrollBehavior = 'smooth';
+
+    return () => {
+      document.documentElement.style.scrollSnapType = '';
+      document.documentElement.style.scrollBehavior = '';
+    };
+  }, []);
 
   return (
     <ThemeProvider>
@@ -48,6 +60,7 @@ export default function App() {
                   <>
                     <Home />
                     <About />
+                    <Skills />
                     <Projects />
                   </>
                 }

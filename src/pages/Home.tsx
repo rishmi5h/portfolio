@@ -7,15 +7,32 @@ import { useTheme } from '../contexts/ThemeContext.tsx';
 const Home = () => {
   const { isDarkMode } = useTheme();
   const [showPopup, setShowPopup] = useState(false);
+  const [roast, setRoast] = useState<string>('');
+  const [loadingRoast, setLoadingRoast] = useState<boolean>(false);
 
   const handleButtonClick = () => setShowPopup(true);
   const handleClosePopup = () => setShowPopup(false);
 
+  const handleRoastMe = async () => {
+    setLoadingRoast(true);
+    try {
+      const response = await fetch('https://raas.rishmi5h.com/roast/');
+      if (!response.ok) throw new Error('Failed to fetch roast');
+      const data = await response.json();
+      setRoast(data.roast || 'No roast returned');
+    } catch {
+      setRoast('The roast machine is overheating... try again!');
+    } finally {
+      setLoadingRoast(false);
+    }
+  };
+
   return (
     <>
       <div
-        className={`flex min-h-screen flex-col items-center justify-center ${isDarkMode ? darkModeColor : lightModeColor} transition-colors duration-300`}
+        className={`flex min-h-screen flex-col items-center justify-center transition-colors duration-300 ${isDarkMode ? darkModeColor : lightModeColor}`}
         id="home"
+        style={{ scrollSnapAlign: 'start', scrollSnapStop: 'always' }}
       >
         <div className="space-y-8 px-4 text-center">
           <h2
@@ -87,6 +104,75 @@ const Home = () => {
           </div>
         </div>
       )}
+
+      {/* Roast Section */}
+      <div
+        className={`flex min-h-screen flex-col items-center justify-center transition-colors duration-300 ${isDarkMode ? darkModeColor : lightModeColor}`}
+        style={{ scrollSnapAlign: 'start', scrollSnapStop: 'always' }}
+      >
+        <div className="max-w-2xl space-y-8 px-4 py-20 text-center">
+          <div className="space-y-4">
+            <div className="inline-block">
+              <div className="animate-pulse text-6xl">🔥</div>
+            </div>
+            <h2
+              className={`text-5xl font-bold sm:text-6xl ${
+                isDarkMode ? 'text-gray-100' : 'text-gray-900'
+              }`}
+            >
+              Feeling Brave?
+            </h2>
+            <p
+              className={`text-xl font-medium sm:text-2xl ${
+                isDarkMode ? 'text-gray-300' : 'text-gray-700'
+              }`}
+            >
+              I have an AI that roasts people. Here, let me show you how it
+              works...
+            </p>
+          </div>
+
+          {!roast ? (
+            <div className="space-y-6">
+              <button
+                disabled={loadingRoast}
+                className="inline-flex items-center rounded-full bg-pink-600 px-6 py-3 font-bold text-white transition-colors duration-300 hover:bg-pink-700 disabled:bg-gray-500"
+                onClick={handleRoastMe}
+              >
+                {loadingRoast ? '⏳ Getting roasted...' : '🎤 Bring It On'}
+              </button>
+              <p
+                className={`text-sm ${
+                  isDarkMode ? 'text-gray-400' : 'text-gray-600'
+                }`}
+              >
+                No worries, it's all in good fun! 😄
+              </p>
+            </div>
+          ) : (
+            <div
+              className={`space-y-6 rounded-lg p-8 shadow-lg ${
+                isDarkMode ? 'bg-gray-700/30' : 'bg-gray-200'
+              }`}
+            >
+              <div className="text-5xl">💬</div>
+              <p
+                className={`text-lg font-medium italic leading-relaxed ${
+                  isDarkMode ? 'text-gray-100' : 'text-gray-900'
+                }`}
+              >
+                "{roast}"
+              </p>
+              <button
+                className="inline-flex items-center rounded-full bg-pink-600 px-6 py-3 font-bold text-white transition-colors duration-300 hover:bg-pink-700 disabled:bg-gray-500"
+                onClick={handleRoastMe}
+              >
+                {loadingRoast ? '⏳ Loading...' : '🔥 More Pain'}
+              </button>
+            </div>
+          )}
+        </div>
+      </div>
     </>
   );
 };
