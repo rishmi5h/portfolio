@@ -11,12 +11,12 @@ export const projects = [
 
   {
     description:
-      'ΣUI is a Component Library that helps in building UI faster and easier. ',
-    githubLink: 'https://github.com/rishmi5h/Sigma-UI',
-    imageUrl: 'assets/sigma-ui.webp',
-    name: 'Sigma UI - Component Library',
-    projectLink: 'https://sigma-ui.rishmi5h.com/',
-    techStack: ['HTML', 'CSS', 'JavaScript'],
+      'Intelligent code analyzer that explains GitHub repositories in seconds.',
+    githubLink: 'https://github.com/rishmi5h/smar-ai',
+    imageUrl: 'assets/smar-ai.png',
+    name: 'Smar AI - Code Analyzer',
+    projectLink: 'https://smarai.rishmi5h.com/',
+    techStack: ['Ollama', 'LLM', 'GitHub', 'Code Analysis'],
   },
   {
     description: 'E-commerce for black color apparels',
