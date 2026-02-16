@@ -1,6 +1,22 @@
 export const projects = [
   {
     description:
+      'AI-powered wardrobe planner and stylist for Indian fashion with smart outfit recommendations.',
+    githubLink: 'https://github.com/rishmi5h/stylesync',
+    imageUrl: 'assets/stylesync.png',
+    name: 'StyleSync - AI Wardrobe Planner',
+    projectLink: 'https://stylesync.rishmi5h.com/',
+    techStack: [
+      'React',
+      'Vite',
+      'Tailwind CSS',
+      'Node.js',
+      'Gemini AI',
+      'Groq',
+    ],
+  },
+  {
+    description:
       'Imagery is a image management service that allows you to upload, store and edit your images. ',
     githubLink: 'https://github.com/rishmi5h/image-processing-service',
     imageUrl: 'assets/imagery.webp',
@@ -26,11 +42,29 @@ export const projects = [
     projectLink: 'https://bu.rishmi5h.com/',
     techStack: ['Next.js', 'Tailwind CSS', 'TypeScript', 'Pnpm'],
   },
+  {
+    description:
+      'Lightweight component library that helps you build UI faster and easier with pre-built components.',
+    githubLink: 'https://github.com/rishmi5h/Sigma-UI',
+    imageUrl: 'assets/sigma-ui.webp',
+    name: 'Sigma UI - Component Library',
+    projectLink: 'https://sigma-ui.rishmi5h.com/',
+    techStack: ['HTML', 'CSS', 'JavaScript', 'UI Components'],
+  },
 
   // Add more projects as needed
 ];
 
 export const funProjects = [
+  {
+    description:
+      'A playful interactive website to invite my lover for a date with a fun twist.',
+    githubLink: 'https://github.com/rishmi5h/doyouwannagooutwithme',
+    imageUrl: 'assets/do-you-wanna-go-out.webp',
+    name: 'Do You Wanna Go Out With Me',
+    projectLink: 'https://doyouwannagooutwith.rishmi5h.com/',
+    techStack: ['HTML', 'CSS', 'JavaScript'],
+  },
   {
     description: 'Portfolio website but themed like a terminal. ',
     githubLink: 'https://github.com/rishmi5h/terminal',
