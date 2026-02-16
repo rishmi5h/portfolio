@@ -1,17 +1,11 @@
 import React, { useState } from 'react';
-import { FiEye, FiX } from 'react-icons/fi';
-import { HashLink as Link } from 'react-router-hash-link';
 import { darkModeColor, lightModeColor } from '../constants/colors.tsx';
 import { useTheme } from '../contexts/ThemeContext.tsx';
 
 const Home = () => {
   const { isDarkMode } = useTheme();
-  const [showPopup, setShowPopup] = useState(false);
   const [roast, setRoast] = useState<string>('');
   const [loadingRoast, setLoadingRoast] = useState<boolean>(false);
-
-  const handleButtonClick = () => setShowPopup(true);
-  const handleClosePopup = () => setShowPopup(false);
 
   const handleRoastMe = async () => {
     setLoadingRoast(true);
@@ -35,32 +29,36 @@ const Home = () => {
         style={{ scrollSnapAlign: 'start', scrollSnapStop: 'always' }}
       >
         <div className="space-y-8 px-4 text-center">
-          <h2
-            className={`text-2xl font-light ${isDarkMode ? 'text-gray-300' : 'text-gray-700'}`}
-          >
-            <Link
-              className="border-b border-dotted border-current transition-colors duration-300 hover:text-blue-600"
-              to="#about"
+          <div className="flex items-center justify-center gap-3">
+            <span className="text-2xl">✨</span>
+            <p
+              className={`text-xl font-light sm:text-2xl ${isDarkMode ? 'text-gray-300' : 'text-gray-700'}`}
             >
-              who am i ?
-            </Link>
-          </h2>
-          <h1 className="text-6xl font-bold text-blue-600 sm:text-7xl">
-            rishabh mishra
-          </h1>
-          <p
-            className={`text-xl font-medium sm:text-2xl ${isDarkMode ? 'text-gray-300' : 'text-gray-700'}`}
-          >
-            software engineer - India
-          </p>
-          <button
-            aria-label="View Resume"
-            className="inline-flex items-center rounded-full bg-pink-600 px-6 py-3 font-bold text-white transition-colors duration-300 hover:bg-pink-700"
-            onClick={handleButtonClick}
-          >
-            <span className="mr-2">resume</span>
-            <FiEye className="h-5 w-5" />
-          </button>
+              "Jack of all trades, master of some"
+            </p>
+            <span className="text-2xl">✨</span>
+          </div>
+
+          <div className="space-y-4">
+            <div
+              className={`mx-auto h-0.5 w-24 ${isDarkMode ? 'bg-blue-500' : 'bg-blue-400'}`}
+            ></div>
+            <h1 className="text-6xl font-bold text-blue-600 sm:text-7xl">
+              rishabh mishra
+            </h1>
+            <div
+              className={`mx-auto h-0.5 w-24 ${isDarkMode ? 'bg-blue-500' : 'bg-blue-400'}`}
+            ></div>
+          </div>
+
+          <div className="flex items-center justify-center gap-2">
+            <p
+              className={`text-xl font-medium sm:text-2xl ${isDarkMode ? 'text-gray-300' : 'text-gray-700'}`}
+            >
+              software engineer - India
+            </p>
+            <span className="text-xl">🇮🇳</span>
+          </div>
         </div>
         <div className="mt-16">
           <a className="block animate-bounce" href="#roast">
@@ -81,29 +79,6 @@ const Home = () => {
           </a>
         </div>
       </div>
-
-      {showPopup && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50 p-4">
-          <div
-            className={`rounded-lg p-6 shadow-lg ${isDarkMode ? 'bg-gray-800 text-white' : 'bg-white text-black'} w-full max-w-3xl`}
-          >
-            <div className="mb-4 flex items-center justify-between">
-              <h2 className="text-2xl font-bold">Resume</h2>
-              <button
-                className="text-gray-500 transition-colors duration-300 hover:text-gray-700"
-                onClick={handleClosePopup}
-              >
-                <FiX className="h-6 w-6" />
-              </button>
-            </div>
-            <iframe
-              className="h-[70vh] w-full"
-              src="/assets/resume.pdf"
-              title="Resume PDF"
-            ></iframe>
-          </div>
-        </div>
-      )}
 
       {/* Roast Section */}
       <div
@@ -172,38 +147,6 @@ const Home = () => {
               </button>
             </div>
           )}
-        </div>
-        <div className="mt-16 flex flex-col items-center space-y-6">
-          <a
-            href="#about"
-            className={`group relative inline-flex items-center gap-3 px-8 py-4 text-lg font-semibold transition-all duration-300 ${
-              isDarkMode
-                ? 'text-gray-300 hover:text-white'
-                : 'text-gray-700 hover:text-blue-600'
-            }`}
-          >
-            <span>Curious about my story?</span>
-            <svg
-              className={`h-5 w-5 transition-transform duration-300 group-hover:translate-x-1 ${
-                isDarkMode ? 'text-gray-400' : 'text-gray-500'
-              }`}
-              fill="none"
-              stroke="currentColor"
-              viewBox="0 0 24 24"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth={2}
-                d="M13 7l5 5m0 0l-5 5m5-5H6"
-              />
-            </svg>
-          </a>
-          <div
-            className={`h-0.5 w-12 transition-all duration-300 group-hover:w-20 ${
-              isDarkMode ? 'bg-gray-600' : 'bg-blue-300'
-            }`}
-          />
         </div>
       </div>
     </>

@@ -8,7 +8,6 @@ import Footer from './components/Footer.tsx';
 import Interesting from './components/Interesting.tsx';
 import Navbar from './components/Navbar.tsx';
 import { ThemeProvider } from './contexts/ThemeContext.tsx';
-import About from './pages/About.tsx';
 import Home from './pages/Home.tsx';
 import Projects from './pages/Projects.tsx';
 import Roast from './pages/Roast.tsx';
@@ -74,7 +73,6 @@ export default function App() {
                 element={
                   <>
                     <Home />
-                    <About />
                     <Skills />
                     <Projects />
                   </>

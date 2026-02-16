@@ -28,7 +28,7 @@ const Footer = () => {
         />
         <SocialIcon
           Icon={FaInstagram}
-          link="https://www.instagram.com/dugggalsahab/"
+          link="https://www.instagram.com/rishmi5h/"
           name="Instagram Profile"
         />
         <SocialIcon
