@@ -13,6 +13,7 @@ const Home = () => {
       const response = await fetch('https://raas.rishmi5h.com/roast/');
       if (!response.ok) throw new Error('Failed to fetch roast');
       const data = await response.json();
+      await new Promise((resolve) => setTimeout(resolve, 400));
       setRoast(data.roast || 'No roast returned');
     } catch {
       setRoast('The roast machine is overheating... try again!');
