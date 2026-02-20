@@ -103,7 +103,7 @@ const Home = () => {
                 isDarkMode ? 'text-gray-300' : 'text-gray-700'
               }`}
             >
-              I have an AI that roasts people. Here, let me show you how it
+              I have an tool that roasts people. Here, let me show you how it
               works...
             </p>
           </div>
