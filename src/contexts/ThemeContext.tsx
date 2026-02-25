@@ -23,6 +23,14 @@ export const ThemeProvider: React.FC<{ children: ReactNode }> = ({
 
   useEffect(() => {
     localStorage.setItem('theme', isDarkMode ? 'dark' : 'light');
+    const root = document.documentElement;
+    if (isDarkMode) {
+      root.style.setProperty('--background-color', 'rgb(20, 20, 20)');
+      root.style.setProperty('--text-color', 'rgb(230, 230, 230)');
+    } else {
+      root.style.setProperty('--background-color', '#fff');
+      root.style.setProperty('--text-color', '#111');
+    }
   }, [isDarkMode]);
 
   const toggleTheme = () => {
