@@ -28,7 +28,7 @@ export const ThemeProvider: React.FC<{ children: ReactNode }> = ({
       root.style.setProperty('--background-color', '#0f172a');
       root.style.setProperty('--text-color', 'rgb(230, 230, 230)');
     } else {
-      root.style.setProperty('--background-color', '#fff');
+      root.style.setProperty('--background-color', '#f8fafc');
       root.style.setProperty('--text-color', '#111');
     }
   }, [isDarkMode]);
