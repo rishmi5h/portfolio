@@ -49,3 +49,145 @@ body {
 .text-rainbow {
   animation: rainbow 5s linear infinite;
 }
+
+/* Hero gradient text animation */
+@keyframes gradient-shift {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+.gradient-text {
+  background: linear-gradient(270deg, #60a5fa, #a78bfa, #f472b6, #60a5fa);
+  background-size: 300% 300%;
+  animation: gradient-shift 6s ease infinite;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.gradient-text-light {
+  background: linear-gradient(270deg, #2563eb, #7c3aed, #db2777, #2563eb);
+  background-size: 300% 300%;
+  animation: gradient-shift 6s ease infinite;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Floating orbs */
+@keyframes float-1 {
+  0%,
+  100% {
+    transform: translate(0, 0) scale(1);
+  }
+  33% {
+    transform: translate(30px, -50px) scale(1.1);
+  }
+  66% {
+    transform: translate(-20px, 20px) scale(0.9);
+  }
+}
+
+@keyframes float-2 {
+  0%,
+  100% {
+    transform: translate(0, 0) scale(1);
+  }
+  33% {
+    transform: translate(-40px, 30px) scale(1.15);
+  }
+  66% {
+    transform: translate(25px, -40px) scale(0.85);
+  }
+}
+
+@keyframes float-3 {
+  0%,
+  100% {
+    transform: translate(0, 0) scale(1);
+  }
+  33% {
+    transform: translate(20px, 40px) scale(0.95);
+  }
+  66% {
+    transform: translate(-35px, -25px) scale(1.05);
+  }
+}
+
+.orb {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(80px);
+  opacity: 0.4;
+  pointer-events: none;
+}
+
+.orb-1 {
+  width: 350px;
+  height: 350px;
+  background: radial-gradient(circle, #3b82f6, transparent 70%);
+  top: 10%;
+  left: 15%;
+  animation: float-1 12s ease-in-out infinite;
+}
+
+.orb-2 {
+  width: 300px;
+  height: 300px;
+  background: radial-gradient(circle, #8b5cf6, transparent 70%);
+  top: 50%;
+  right: 10%;
+  animation: float-2 15s ease-in-out infinite;
+}
+
+.orb-3 {
+  width: 250px;
+  height: 250px;
+  background: radial-gradient(circle, #ec4899, transparent 70%);
+  bottom: 15%;
+  left: 40%;
+  animation: float-3 10s ease-in-out infinite;
+}
+
+/* Pulse ring for scroll indicator */
+@keyframes pulse-ring {
+  0% {
+    transform: scale(0.8);
+    opacity: 0.5;
+  }
+  50% {
+    transform: scale(1.2);
+    opacity: 0;
+  }
+  100% {
+    transform: scale(0.8);
+    opacity: 0;
+  }
+}
+
+.scroll-indicator-ring {
+  animation: pulse-ring 2s ease-out infinite;
+}
+
+/* Scale down orbs on smaller screens */
+@media (max-width: 768px) {
+  .orb-1 {
+    width: 200px;
+    height: 200px;
+  }
+  .orb-2 {
+    width: 180px;
+    height: 180px;
+  }
+  .orb-3 {
+    width: 150px;
+    height: 150px;
+  }
+}
