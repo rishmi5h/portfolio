@@ -53,10 +53,6 @@ const Home = () => {
   const [loadingRoast, setLoadingRoast] = useState<boolean>(false);
 
   const { displayed: nameText } = useTextScramble('rishabh mishra', 400);
-  const { displayed: tagline } = useTextScramble(
-    '"Jack of all trades, master of some"',
-    1600,
-  );
 
   const handleRoastMe = async () => {
     setLoadingRoast(true);
@@ -151,7 +147,7 @@ const Home = () => {
             <p
               className={`font-mono text-sm tracking-wide sm:text-lg md:text-xl ${isDarkMode ? 'text-gray-400' : 'text-gray-500'}`}
             >
-              {tagline || '\u00A0'}
+              "Jack of all trades, master of some"
             </p>
           </motion.div>
 
