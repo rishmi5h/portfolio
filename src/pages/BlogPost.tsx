@@ -15,15 +15,16 @@ const formatDate = (iso: string) => {
 };
 
 // Render simple markdown-ish content.
-// Supports: paragraphs, lists (- item), **bold**, *italic*, `inline code`, ## / ### headings.
+// Supports: paragraphs, lists (- item), **bold** / __bold__, *italic* / _italic_,
+// `inline code`, and ## / ### headings.
 const renderInline = (text: string, isDarkMode: boolean) => {
   const parts: React.ReactNode[] = [];
   let remaining = text;
   let key = 0;
 
   // Inline patterns (order matters — check longer delimiters first):
-  //   **bold**  |  *italic*  |  `code`
-  const pattern = /\*\*([^*]+)\*\*|\*([^*]+)\*|`([^`]+)`/;
+  //   **bold** / __bold__  |  *italic* / _italic_  |  `code`
+  const pattern = /\*\*([^*]+)\*\*|__([^_]+)__|\*([^*]+)\*|_([^_]+)_|`([^`]+)`/;
   while (remaining.length > 0) {
     const match = pattern.exec(remaining);
     if (!match) {
@@ -33,22 +34,26 @@ const renderInline = (text: string, isDarkMode: boolean) => {
     if (match.index > 0) {
       parts.push(remaining.slice(0, match.index));
     }
-    if (match[1] !== undefined) {
+    const bold = match[1] ?? match[2];
+    const italic = match[3] ?? match[4];
+    const code = match[5];
+
+    if (bold !== undefined) {
       parts.push(
         <strong
           key={key++}
           className={isDarkMode ? 'text-gray-100' : 'text-gray-900'}
         >
-          {match[1]}
+          {bold}
         </strong>,
       );
-    } else if (match[2] !== undefined) {
+    } else if (italic !== undefined) {
       parts.push(
         <em key={key++} className="italic">
-          {match[2]}
+          {italic}
         </em>,
       );
-    } else if (match[3] !== undefined) {
+    } else if (code !== undefined) {
       parts.push(
         <code
           key={key++}
@@ -58,7 +63,7 @@ const renderInline = (text: string, isDarkMode: boolean) => {
               : 'bg-black/5 text-blue-700'
           }`}
         >
-          {match[3]}
+          {code}
         </code>,
       );
     }
