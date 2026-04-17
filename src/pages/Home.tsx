@@ -21,8 +21,12 @@ const useTextScramble = (text: string, delay: number = 0) => {
           text
             .split('')
             .map((char, i) => {
-              if (char === ' ') return ' ';
-              if (i < iteration) return text[i];
+              if (char === ' ') {
+                return ' ';
+              }
+              if (i < iteration) {
+                return text[i];
+              }
               return SCRAMBLE_CHARS[
                 Math.floor(Math.random() * SCRAMBLE_CHARS.length)
               ];
@@ -58,7 +62,9 @@ const Home = () => {
     setLoadingRoast(true);
     try {
       const response = await fetch('https://raas.rishmi5h.com/roast/');
-      if (!response.ok) throw new Error('Failed to fetch roast');
+      if (!response.ok) {
+        throw new Error('Failed to fetch roast');
+      }
       const data = await response.json();
       await new Promise((resolve) => setTimeout(resolve, 400));
       setRoast(data.roast || 'No roast returned');
@@ -73,28 +79,28 @@ const Home = () => {
     hidden: {},
     visible: {
       transition: {
-        staggerChildren: 0.2,
         delayChildren: 0.1,
+        staggerChildren: 0.2,
       },
     },
   };
 
   const itemVariants = {
-    hidden: { opacity: 0, y: 30, filter: 'blur(10px)' },
+    hidden: { filter: 'blur(10px)', opacity: 0, y: 30 },
     visible: {
-      opacity: 1,
-      y: 0,
       filter: 'blur(0px)',
+      opacity: 1,
       transition: { duration: 0.8, ease: [0.25, 0.46, 0.45, 0.94] },
+      y: 0,
     },
   };
 
   const lineVariants = {
-    hidden: { scaleX: 0, opacity: 0 },
+    hidden: { opacity: 0, scaleX: 0 },
     visible: {
-      scaleX: 1,
       opacity: 1,
-      transition: { duration: 0.8, ease: [0.25, 0.46, 0.45, 0.94], delay: 0.3 },
+      scaleX: 1,
+      transition: { delay: 0.3, duration: 0.8, ease: [0.25, 0.46, 0.45, 0.94] },
     },
   };
 
@@ -104,9 +110,9 @@ const Home = () => {
         className={`relative flex flex-col items-center justify-center overflow-hidden transition-colors duration-300 ${isDarkMode ? darkModeColor : lightModeColor}`}
         id="home"
         style={{
+          minHeight: 'calc(100dvh - 72px)',
           scrollSnapAlign: 'start',
           scrollSnapStop: 'always',
-          minHeight: 'calc(100dvh - 72px)',
         }}
       >
         {/* Floating orbs background */}
@@ -134,9 +140,9 @@ const Home = () => {
         />
 
         <motion.div
+          animate="visible"
           className="relative z-10 space-y-4 px-4 text-center sm:space-y-8"
           initial="hidden"
-          animate="visible"
           variants={containerVariants}
         >
           {/* Tagline */}
@@ -190,24 +196,24 @@ const Home = () => {
 
         {/* Scroll indicator */}
         <motion.div
+          animate={{ opacity: 1 }}
           className="absolute bottom-10"
           initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
           transition={{ delay: 2.5, duration: 1 }}
         >
           <a className="group relative block" href="#roast">
             <span
               className={`absolute inset-0 rounded-full ${isDarkMode ? 'bg-white/10' : 'bg-black/5'} scroll-indicator-ring`}
-              style={{ width: 48, height: 48, left: -4, top: -4 }}
+              style={{ height: 48, left: -4, top: -4, width: 48 }}
             />
             <motion.svg
+              animate={{ y: [0, 8, 0] }}
               className={`h-10 w-10 ${isDarkMode ? 'text-gray-400' : 'text-gray-500'}`}
               fill="none"
               stroke="currentColor"
+              transition={{ duration: 2, ease: 'easeInOut', repeat: Infinity }}
               viewBox="0 0 24 24"
               xmlns="http://www.w3.org/2000/svg"
-              animate={{ y: [0, 8, 0] }}
-              transition={{ duration: 2, repeat: Infinity, ease: 'easeInOut' }}
             >
               <path
                 d="M19 14l-7 7m0 0l-7-7m7 7V3"
@@ -251,8 +257,8 @@ const Home = () => {
           {!roast ? (
             <div className="space-y-6">
               <button
-                disabled={loadingRoast}
                 className="inline-flex items-center rounded-full bg-pink-600 px-6 py-3 font-bold text-white transition-colors duration-300 hover:bg-pink-700 disabled:bg-gray-500"
+                disabled={loadingRoast}
                 onClick={handleRoastMe}
               >
                 {loadingRoast ? '⏳ Getting roasted...' : '🎤 Bring It On'}

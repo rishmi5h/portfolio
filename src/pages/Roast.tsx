@@ -48,12 +48,12 @@ const Roast: React.FC = () => {
 
           <div className="flex justify-center pt-4">
             <button
-              disabled={loading}
               className={`relative rounded-lg px-8 py-4 text-xl font-bold uppercase tracking-wide transition-all duration-300 ${
                 isDarkMode
                   ? 'bg-gradient-to-r from-orange-500 to-red-600 hover:from-orange-600 hover:to-red-700 disabled:from-gray-600 disabled:to-gray-600'
                   : 'bg-gradient-to-r from-orange-500 to-red-600 hover:from-orange-600 hover:to-red-700 disabled:from-gray-400 disabled:to-gray-400'
               } text-white shadow-lg hover:shadow-xl`}
+              disabled={loading}
               onClick={handleRoastMe}
             >
               {loading ? '⏳ Getting roasted...' : '🎤 Bring It On'}

@@ -8,9 +8,9 @@ import { useTheme } from '../contexts/ThemeContext.tsx';
 const formatDate = (iso: string) => {
   const d = new Date(iso);
   return d.toLocaleDateString('en-US', {
-    year: 'numeric',
-    month: 'short',
     day: 'numeric',
+    month: 'short',
+    year: 'numeric',
   });
 };
 
@@ -21,19 +21,19 @@ const Blog: React.FC = () => {
     hidden: {},
     visible: {
       transition: {
-        staggerChildren: 0.12,
         delayChildren: 0.1,
+        staggerChildren: 0.12,
       },
     },
   };
 
   const itemVariants = {
-    hidden: { opacity: 0, y: 24, filter: 'blur(8px)' },
+    hidden: { filter: 'blur(8px)', opacity: 0, y: 24 },
     visible: {
-      opacity: 1,
-      y: 0,
       filter: 'blur(0px)',
+      opacity: 1,
       transition: { duration: 0.6, ease: [0.25, 0.46, 0.45, 0.94] },
+      y: 0,
     },
   };
 
@@ -64,13 +64,13 @@ const Blog: React.FC = () => {
 
       <div className="relative z-10 mx-auto max-w-3xl px-6 py-20">
         <motion.div
-          initial="hidden"
           animate="visible"
-          variants={containerVariants}
           className="space-y-12"
+          initial="hidden"
+          variants={containerVariants}
         >
           {/* Header */}
-          <motion.header variants={itemVariants} className="space-y-3">
+          <motion.header className="space-y-3" variants={itemVariants}>
             <p
               className={`font-mono text-sm tracking-widest ${isDarkMode ? 'text-gray-400' : 'text-gray-500'}`}
             >
@@ -93,16 +93,16 @@ const Blog: React.FC = () => {
           </motion.header>
 
           {/* Post list */}
-          <motion.ul variants={containerVariants} className="space-y-6">
+          <motion.ul className="space-y-6" variants={containerVariants}>
             {blogPosts.map((post) => (
               <motion.li key={post.slug} variants={itemVariants}>
                 <Link
-                  to={`/blog/${post.slug}`}
                   className={`group block rounded-2xl border p-6 transition-all duration-300 ${
                     isDarkMode
                       ? 'border-white/10 bg-white/5 hover:border-blue-400/40 hover:bg-white/10'
                       : 'border-black/10 bg-white hover:border-blue-400/60 hover:shadow-lg'
                   }`}
+                  to={`/blog/${post.slug}`}
                 >
                   <div
                     className={`flex flex-wrap items-center gap-3 text-xs font-medium ${isDarkMode ? 'text-gray-400' : 'text-gray-500'}`}

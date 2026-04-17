@@ -1,11 +1,9 @@
 import React from 'react';
 import { Helmet } from 'react-helmet';
 import { Route, BrowserRouter as Router, Routes } from 'react-router-dom';
-import Contact from './components/Contact.tsx';
 import CustomCursor from './components/CustomCursor.tsx';
 import { useKonamiCode } from './components/EasterEggs.tsx';
 import Footer from './components/Footer.tsx';
-import Interesting from './components/Interesting.tsx';
 import Navbar from './components/Navbar.tsx';
 import { ThemeProvider } from './contexts/ThemeContext.tsx';
 import Blog from './pages/Blog.tsx';
@@ -69,11 +67,10 @@ export default function App() {
           <Navbar />
           <main className="flex-grow">
             <Routes>
-              <Route path="/roast" element={<Roast />} />
-              <Route path="/blog" element={<Blog />} />
-              <Route path="/blog/:slug" element={<BlogPost />} />
+              <Route element={<Roast />} path="/roast" />
+              <Route element={<Blog />} path="/blog" />
+              <Route element={<BlogPost />} path="/blog/:slug" />
               <Route
-                path="/"
                 element={
                   <>
                     <Home />
@@ -81,6 +78,7 @@ export default function App() {
                     <Projects />
                   </>
                 }
+                path="/"
               />
             </Routes>
           </main>

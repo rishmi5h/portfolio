@@ -8,9 +8,9 @@ import { useTheme } from '../contexts/ThemeContext.tsx';
 const formatDate = (iso: string) => {
   const d = new Date(iso);
   return d.toLocaleDateString('en-US', {
-    year: 'numeric',
-    month: 'long',
     day: 'numeric',
+    month: 'long',
+    year: 'numeric',
   });
 };
 
@@ -28,7 +28,9 @@ const renderInline = (text: string, isDarkMode: boolean) => {
       parts.push(remaining);
       break;
     }
-    if (match.index > 0) parts.push(remaining.slice(0, match.index));
+    if (match.index > 0) {
+      parts.push(remaining.slice(0, match.index));
+    }
     if (match[1] !== undefined) {
       parts.push(
         <strong
@@ -103,12 +105,12 @@ const BlogPost: React.FC = () => {
           Post not found
         </h1>
         <Link
-          to="/blog"
           className={`rounded-full px-5 py-2 text-sm font-medium transition-colors ${
             isDarkMode
               ? 'bg-white/10 text-gray-100 hover:bg-white/20'
               : 'bg-black/5 text-gray-900 hover:bg-black/10'
           }`}
+          to="/blog"
         >
           ← back to blog
         </Link>
@@ -137,18 +139,18 @@ const BlogPost: React.FC = () => {
       </div>
 
       <motion.article
-        initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.6, ease: [0.25, 0.46, 0.45, 0.94] }}
         className="relative z-10 mx-auto max-w-2xl px-6 py-16"
+        initial={{ opacity: 0, y: 20 }}
+        transition={{ duration: 0.6, ease: [0.25, 0.46, 0.45, 0.94] }}
       >
         <Link
-          to="/blog"
           className={`inline-flex items-center gap-1 text-sm font-medium transition-colors ${
             isDarkMode
               ? 'text-gray-400 hover:text-blue-300'
               : 'text-gray-500 hover:text-blue-600'
           }`}
+          to="/blog"
         >
           ← all posts
         </Link>
@@ -198,12 +200,12 @@ const BlogPost: React.FC = () => {
           />
           <div className="mt-6 flex items-center justify-between">
             <Link
-              to="/blog"
               className={`text-sm font-medium transition-colors ${
                 isDarkMode
                   ? 'text-gray-400 hover:text-blue-300'
                   : 'text-gray-500 hover:text-blue-600'
               }`}
+              to="/blog"
             >
               ← all posts
             </Link>
