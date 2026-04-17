@@ -1,3 +1,28 @@
+// ┌──────────────────────────────────────────────────────────────────┐
+// │ How to add a new blog post:                                      │
+// │                                                                  │
+// │  1. Create a new file under `src/posts/`, e.g.                   │
+// │     `src/posts/my-new-post.md`                                   │
+// │                                                                  │
+// │  2. Add frontmatter at the top (between --- fences):             │
+// │     ---                                                          │
+// │     title: My new post                                           │
+// │     date: 2026-05-01                                             │
+// │     excerpt: One-line hook that shows up on the list page.       │
+// │     tags: [engineering, notes]                                   │
+// │     readTime: 4 min read   # optional, auto-estimated otherwise  │
+// │     ---                                                          │
+// │                                                                  │
+// │  3. Write the body in Markdown below the frontmatter.            │
+// │     Supported: paragraphs, lists (- item), **bold**, *italic*,   │
+// │     `inline code`, and ## / ### headings.                        │
+// │                                                                  │
+// │  4. Save. The file name (minus `.md`) becomes the URL slug:      │
+// │     `/blog/my-new-post`                                          │
+// │                                                                  │
+// │  Posts are sorted newest-first by the `date` field.              │
+// └──────────────────────────────────────────────────────────────────┘
+
 export type BlogPost = {
   content: string;
   date: string;
@@ -8,62 +33,80 @@ export type BlogPost = {
   title: string;
 };
 
-export const blogPosts: BlogPost[] = [
-  {
-    content: `I've spent the last few years absorbing writing from engineers I admire — long-form deep dives, short sharp takes, and everything in between. Every single one of them, at some point, said the same thing: *just start writing*.
+// Vite eagerly inlines all .md files at build time as raw strings.
+const files = import.meta.glob('../posts/*.md', {
+  eager: true,
+  import: 'default',
+  query: '?raw',
+}) as Record<string, string>;
 
-So here we are.
+type Frontmatter = Partial<{
+  date: string;
+  excerpt: string;
+  readTime: string;
+  slug: string;
+  tags: string[];
+  title: string;
+}>;
 
-This blog is a scratchpad for things I'm learning, problems I've debugged, and the occasional opinion I can't shake loose. No pressure to be polished. No pressure to be right. Just a place to put the thoughts down while they're still fresh.
+const parseFrontmatter = (
+  raw: string,
+): { content: string; data: Frontmatter } => {
+  const match = /^---\r?\n([\s\S]*?)\r?\n---\r?\n?/.exec(raw);
+  if (!match) return { content: raw, data: {} };
 
-If any of it ends up being useful to someone else, that's a bonus.`,
-    date: '2026-04-18',
-    excerpt:
-      "After years of shipping code and reading other people's posts, I'm starting my own corner of the internet to think out loud.",
-    readTime: '3 min read',
-    slug: 'hello-world',
-    tags: ['meta', 'writing'],
-    title: 'Hello, world — why I finally started writing',
-  },
-  {
-    content: `The roast API on this very site (try the button on the home page) is one of the dumbest things I've built. It takes zero inputs and returns a single string that makes fun of you.
+  const data: Record<string, string | string[]> = {};
+  for (const line of match[1].split(/\r?\n/)) {
+    const kv = /^([A-Za-z0-9_-]+):\s*(.*)$/.exec(line);
+    if (!kv) continue;
+    const [, key, rest] = kv;
+    const trimmed = rest.trim();
 
-That's it. That's the whole product.
+    if (trimmed.startsWith('[') && trimmed.endsWith(']')) {
+      // Array value: [foo, bar, "baz"]
+      data[key] = trimmed
+        .slice(1, -1)
+        .split(',')
+        .map((s) => s.trim().replace(/^['"]|['"]$/g, ''))
+        .filter(Boolean);
+    } else if (
+      (trimmed.startsWith('"') && trimmed.endsWith('"')) ||
+      (trimmed.startsWith("'") && trimmed.endsWith("'"))
+    ) {
+      data[key] = trimmed.slice(1, -1);
+    } else {
+      data[key] = trimmed;
+    }
+  }
 
-And yet — building it forced me through:
+  return { content: raw.slice(match[0].length), data: data as Frontmatter };
+};
 
-- Picking a hosting provider and wrestling with CORS
-- Figuring out cold-start costs and whether caching the output was worth it
-- Iterating on the LLM prompt until the roasts stopped being either too mean or too tame
-- Setting up a custom subdomain with proper TLS
+const estimateReadTime = (text: string): string => {
+  const words = text.trim().split(/\s+/).filter(Boolean).length;
+  const minutes = Math.max(1, Math.round(words / 200));
+  return `${minutes} min read`;
+};
 
-None of that was interesting in the abstract. But with a dumb concrete goal to chase, every one of those problems became a puzzle I actually wanted to solve. The best way to learn a stack is to build something small and real on top of it — bonus points if nobody else will ever use it.`,
-    date: '2026-03-02',
-    excerpt:
-      'A completely unnecessary side project taught me more about deployment, caching, and LLM prompting than any tutorial could.',
-    readTime: '5 min read',
-    slug: 'building-a-roast-api',
-    tags: ['side-projects', 'llm', 'backend'],
-    title: 'Building a roast API (and why useless projects are the best)',
-  },
-  {
-    content: `Early in my career, debugging felt like magic. Senior engineers would squint at a stack trace for thirty seconds and just *know* where the bug was.
+const slugFromPath = (path: string) =>
+  path.split('/').pop()!.replace(/\.md$/, '');
 
-It looked like intuition. It wasn't. It was a habit.
+export const blogPosts: BlogPost[] = Object.entries(files)
+  .map(([path, raw]): BlogPost => {
+    const { content, data } = parseFrontmatter(raw);
+    const fallbackSlug = slugFromPath(path);
+    const trimmedContent = content.trim();
+    const firstParagraph =
+      trimmedContent.split(/\n\n+/)[0]?.replace(/\s+/g, ' ').trim() ?? '';
 
-The habit is this: **separate what you know from what you assume, and then go verify one assumption at a time.**
-
-That's it. That's the whole trick.
-
-Most bugs live in the gap between "I'm pretty sure this function returns a string" and what the function actually returns on Tuesday at 3am when the upstream service is degraded. The people who debug fast aren't smarter — they just don't trust their own mental model until they've poked it with a print statement.
-
-Next time you're stuck, write down every assumption the code makes. Then pick the cheapest one to verify. You'll be surprised how often the bug is hiding in the assumption you thought was obviously true.`,
-    date: '2026-01-14',
-    excerpt:
-      "Debugging isn't about being clever. It's about being relentlessly honest with yourself about what you actually know vs. what you assume.",
-    readTime: '6 min read',
-    slug: 'the-debugging-mindset',
-    tags: ['engineering', 'debugging'],
-    title: 'The debugging mindset I wish I had when I started',
-  },
-];
+    return {
+      content: trimmedContent,
+      date: data.date ?? '1970-01-01',
+      excerpt: data.excerpt ?? firstParagraph.slice(0, 180),
+      readTime: data.readTime ?? estimateReadTime(trimmedContent),
+      slug: data.slug ?? fallbackSlug,
+      tags: data.tags ?? [],
+      title: data.title ?? fallbackSlug,
+    };
+  })
+  .sort((a, b) => (a.date < b.date ? 1 : -1));

@@ -14,14 +14,16 @@ const formatDate = (iso: string) => {
   });
 };
 
-// Render the simple markdown-ish content: paragraphs split by blank lines, with **bold** and *italic*.
+// Render simple markdown-ish content.
+// Supports: paragraphs, lists (- item), **bold**, *italic*, `inline code`, ## / ### headings.
 const renderInline = (text: string, isDarkMode: boolean) => {
   const parts: React.ReactNode[] = [];
   let remaining = text;
   let key = 0;
 
-  // Combined regex: **bold** or *italic*
-  const pattern = /\*\*([^*]+)\*\*|\*([^*]+)\*/;
+  // Inline patterns (order matters — check longer delimiters first):
+  //   **bold**  |  *italic*  |  `code`
+  const pattern = /\*\*([^*]+)\*\*|\*([^*]+)\*|`([^`]+)`/;
   while (remaining.length > 0) {
     const match = pattern.exec(remaining);
     if (!match) {
@@ -46,6 +48,19 @@ const renderInline = (text: string, isDarkMode: boolean) => {
           {match[2]}
         </em>,
       );
+    } else if (match[3] !== undefined) {
+      parts.push(
+        <code
+          key={key++}
+          className={`rounded px-1.5 py-0.5 font-mono text-[0.9em] ${
+            isDarkMode
+              ? 'bg-white/10 text-blue-200'
+              : 'bg-black/5 text-blue-700'
+          }`}
+        >
+          {match[3]}
+        </code>,
+      );
     }
     remaining = remaining.slice(match.index + match[0].length);
   }
@@ -57,7 +72,31 @@ const renderContent = (content: string, isDarkMode: boolean) => {
   return blocks.map((block, i) => {
     const trimmed = block.trim();
 
-    // Bulleted list: lines starting with "- "
+    // ### h3
+    if (trimmed.startsWith('### ')) {
+      return (
+        <h3
+          key={i}
+          className={`mt-6 text-xl font-semibold tracking-tight ${isDarkMode ? 'text-gray-100' : 'text-gray-900'}`}
+        >
+          {renderInline(trimmed.slice(4), isDarkMode)}
+        </h3>
+      );
+    }
+
+    // ## h2
+    if (trimmed.startsWith('## ')) {
+      return (
+        <h2
+          key={i}
+          className={`mt-8 text-2xl font-bold tracking-tight ${isDarkMode ? 'text-gray-100' : 'text-gray-900'}`}
+        >
+          {renderInline(trimmed.slice(3), isDarkMode)}
+        </h2>
+      );
+    }
+
+    // Bulleted list: every line starts with "- "
     if (trimmed.split('\n').every((l) => l.trim().startsWith('- '))) {
       const items = trimmed
         .split('\n')
@@ -65,7 +104,7 @@ const renderContent = (content: string, isDarkMode: boolean) => {
       return (
         <ul
           key={i}
-          className={`list-disc space-y-2 pl-6 ${isDarkMode ? 'text-gray-300' : 'text-gray-700'}`}
+          className={`list-disc space-y-2 pl-6 text-lg leading-relaxed ${isDarkMode ? 'text-gray-300' : 'text-gray-700'}`}
         >
           {items.map((item, j) => (
             <li key={j}>{renderInline(item, isDarkMode)}</li>
