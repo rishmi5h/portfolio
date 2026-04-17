@@ -8,6 +8,7 @@ import Navbar from './components/Navbar.tsx';
 import { ThemeProvider } from './contexts/ThemeContext.tsx';
 import Blog from './pages/Blog.tsx';
 import BlogPost from './pages/BlogPost.tsx';
+import Books from './pages/Books.tsx';
 import Home from './pages/Home.tsx';
 import Projects from './pages/Projects.tsx';
 import Roast from './pages/Roast.tsx';
@@ -70,6 +71,7 @@ export default function App() {
               <Route element={<Roast />} path="/roast" />
               <Route element={<Blog />} path="/blog" />
               <Route element={<BlogPost />} path="/blog/:slug" />
+              <Route element={<Books />} path="/books" />
               <Route
                 element={
                   <>

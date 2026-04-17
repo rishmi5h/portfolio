@@ -38,6 +38,16 @@ const Navbar = () => {
           >
             blog
           </Link>
+          <Link
+            className={`rounded-full px-3 py-1.5 text-sm font-medium transition-colors sm:text-base ${
+              isDarkMode
+                ? 'text-gray-300 hover:bg-white/10 hover:text-white'
+                : 'text-gray-700 hover:bg-black/5 hover:text-gray-900'
+            }`}
+            to="/books"
+          >
+            books
+          </Link>
           <button
             aria-label={
               isDarkMode ? 'Switch to Light Mode' : 'Switch to Dark Mode'

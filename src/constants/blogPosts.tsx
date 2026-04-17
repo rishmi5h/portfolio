@@ -23,6 +23,8 @@
 // │  Posts are sorted newest-first by the `date` field.              │
 // └──────────────────────────────────────────────────────────────────┘
 
+import { parseFrontmatter, slugFromPath } from '../utils/frontmatter.tsx';
+
 export type BlogPost = {
   content: string;
   date: string;
@@ -40,56 +42,17 @@ const files = import.meta.glob('../posts/*.md', {
   query: '?raw',
 }) as Record<string, string>;
 
-type Frontmatter = Partial<{
-  date: string;
-  excerpt: string;
-  readTime: string;
-  slug: string;
-  tags: string[];
-  title: string;
-}>;
-
-const parseFrontmatter = (
-  raw: string,
-): { content: string; data: Frontmatter } => {
-  const match = /^---\r?\n([\s\S]*?)\r?\n---\r?\n?/.exec(raw);
-  if (!match) return { content: raw, data: {} };
-
-  const data: Record<string, string | string[]> = {};
-  for (const line of match[1].split(/\r?\n/)) {
-    const kv = /^([A-Za-z0-9_-]+):\s*(.*)$/.exec(line);
-    if (!kv) continue;
-    const [, key, rest] = kv;
-    const trimmed = rest.trim();
-
-    if (trimmed.startsWith('[') && trimmed.endsWith(']')) {
-      // Array value: [foo, bar, "baz"]
-      data[key] = trimmed
-        .slice(1, -1)
-        .split(',')
-        .map((s) => s.trim().replace(/^['"]|['"]$/g, ''))
-        .filter(Boolean);
-    } else if (
-      (trimmed.startsWith('"') && trimmed.endsWith('"')) ||
-      (trimmed.startsWith("'") && trimmed.endsWith("'"))
-    ) {
-      data[key] = trimmed.slice(1, -1);
-    } else {
-      data[key] = trimmed;
-    }
-  }
-
-  return { content: raw.slice(match[0].length), data: data as Frontmatter };
-};
-
 const estimateReadTime = (text: string): string => {
   const words = text.trim().split(/\s+/).filter(Boolean).length;
   const minutes = Math.max(1, Math.round(words / 200));
   return `${minutes} min read`;
 };
 
-const slugFromPath = (path: string) =>
-  path.split('/').pop()!.replace(/\.md$/, '');
+const asString = (v: string | string[] | undefined): string | undefined =>
+  typeof v === 'string' ? v : undefined;
+
+const asStringArray = (v: string | string[] | undefined): string[] =>
+  Array.isArray(v) ? v : [];
 
 export const blogPosts: BlogPost[] = Object.entries(files)
   .map(([path, raw]): BlogPost => {
@@ -101,12 +64,12 @@ export const blogPosts: BlogPost[] = Object.entries(files)
 
     return {
       content: trimmedContent,
-      date: data.date ?? '1970-01-01',
-      excerpt: data.excerpt ?? firstParagraph.slice(0, 180),
-      readTime: data.readTime ?? estimateReadTime(trimmedContent),
-      slug: data.slug ?? fallbackSlug,
-      tags: data.tags ?? [],
-      title: data.title ?? fallbackSlug,
+      date: asString(data.date) ?? '1970-01-01',
+      excerpt: asString(data.excerpt) ?? firstParagraph.slice(0, 180),
+      readTime: asString(data.readTime) ?? estimateReadTime(trimmedContent),
+      slug: asString(data.slug) ?? fallbackSlug,
+      tags: asStringArray(data.tags),
+      title: asString(data.title) ?? fallbackSlug,
     };
   })
   .sort((a, b) => (a.date < b.date ? 1 : -1));
