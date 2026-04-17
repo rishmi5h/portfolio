@@ -8,6 +8,8 @@ import Footer from './components/Footer.tsx';
 import Interesting from './components/Interesting.tsx';
 import Navbar from './components/Navbar.tsx';
 import { ThemeProvider } from './contexts/ThemeContext.tsx';
+import Blog from './pages/Blog.tsx';
+import BlogPost from './pages/BlogPost.tsx';
 import Home from './pages/Home.tsx';
 import Projects from './pages/Projects.tsx';
 import Roast from './pages/Roast.tsx';
@@ -68,6 +70,8 @@ export default function App() {
           <main className="flex-grow">
             <Routes>
               <Route path="/roast" element={<Roast />} />
+              <Route path="/blog" element={<Blog />} />
+              <Route path="/blog/:slug" element={<BlogPost />} />
               <Route
                 path="/"
                 element={
