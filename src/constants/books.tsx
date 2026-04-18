@@ -4,13 +4,26 @@
 // │   Add an entry to the `books` array below:                       │
 // │     { title: 'Title', author: 'Author', read: '2025' }           │
 // │                                                                  │
-// │   `author` is optional — omit it for anonymous/uncertain works.  │
+// │   Optional fields:                                               │
+// │     author     omit for anonymous/uncertain works                │
+// │     favorite   set `favorite: true` to highlight a book — it     │
+// │                gets a ★ badge and sorts to the top of its year.  │
+// │                Use sparingly (e.g. top 3 per year).              │
+// │     cover      manual override URL for the cover image;          │
+// │                otherwise Books.tsx auto-fetches from Open        │
+// │                Library.                                          │
+// │                                                                  │
 // │   Books are grouped by `read` year on the page,                  │
 // │   newest year first.                                             │
 // └──────────────────────────────────────────────────────────────────┘
 
 export type Book = {
   author?: string;
+  // Optional manual override for the cover image URL. If omitted,
+  // Books.tsx fetches a cover from Open Library based on title + author.
+  cover?: string;
+  // Mark as a standout pick — gets a highlight on the list.
+  favorite?: boolean;
   read: string;
   slug: string;
   title: string;
@@ -33,16 +46,22 @@ const raw: BookInput[] = [
     read: '2025',
     title: 'The Way and the Power: Secrets of Japanese Strategy',
   },
-  { author: 'Oliver Burkeman', read: '2025', title: 'Four Thousand Weeks' },
+  {
+    author: 'Oliver Burkeman',
+    favorite: true,
+    read: '2025',
+    title: 'Four Thousand Weeks',
+  },
   { author: 'Albert Camus', read: '2025', title: 'The Stranger' },
   {
     author: 'Paras Chopra',
+    favorite: true,
     read: '2025',
     title:
       'The Book of Clarity: Building Your Dream Start-Up Using First Principles Thinking',
   },
   { author: 'Osho', read: '2025', title: 'Fear' },
-  { author: 'Osho', read: '2025', title: 'Courage' },
+  { author: 'Osho', favorite: true, read: '2025', title: 'Courage' },
   { author: 'Amish Tripathi', read: '2025', title: 'The Chola Tigers' },
   { author: 'George Orwell', read: '2025', title: 'Animal Farm' },
   { author: 'Franz Kafka', read: '2025', title: 'Metamorphosis' },
@@ -50,7 +69,12 @@ const raw: BookInput[] = [
   { author: 'Fyodor Dostoevsky', read: '2025', title: 'White Nights' },
 
   // 2024
-  { author: 'J. Krishnamurti', read: '2024', title: 'As One Is' },
+  {
+    author: 'J. Krishnamurti',
+    favorite: true,
+    read: '2024',
+    title: 'As One Is',
+  },
   { author: 'Cal Newport', read: '2024', title: 'Slow Productivity' },
   {
     author: 'Baltasar Gracián',
@@ -64,9 +88,14 @@ const raw: BookInput[] = [
   },
   { author: 'Darren Hardy', read: '2024', title: 'The Compound Effect' },
   { author: 'Chirag Gander', read: '2024', title: 'Think Like the Minimalist' },
-  { author: 'Ray Dalio', read: '2024', title: 'Principles' },
+  { author: 'Ray Dalio', favorite: true, read: '2024', title: 'Principles' },
   { author: 'Amish Tripathi', read: '2024', title: 'Ram: Scion of Ikshvaku' },
-  { author: 'Amish Tripathi', read: '2024', title: 'Sita: Warrior of Mithila' },
+  {
+    author: 'Amish Tripathi',
+    favorite: true,
+    read: '2024',
+    title: 'Sita: Warrior of Mithila',
+  },
   {
     author: 'Amish Tripathi',
     read: '2024',
@@ -79,9 +108,19 @@ const raw: BookInput[] = [
     read: '2023',
     title: 'The Lessons of History',
   },
-  { author: 'Mystery', read: '2023', title: 'The Mystery Method' },
+  {
+    author: 'Mystery',
+    favorite: true,
+    read: '2023',
+    title: 'The Mystery Method',
+  },
   { author: 'Morgan Housel', read: '2023', title: 'Same as Ever' },
-  { author: 'Amish Tripathi', read: '2023', title: 'The Immortals of Meluha' },
+  {
+    author: 'Amish Tripathi',
+    favorite: true,
+    read: '2023',
+    title: 'The Immortals of Meluha',
+  },
   { author: 'Amish Tripathi', read: '2023', title: 'The Secret of the Nagas' },
   {
     author: 'Amish Tripathi',
@@ -120,10 +159,20 @@ const raw: BookInput[] = [
     read: '2023',
     title: 'Bhagavad Gita As It Is',
   },
-  { author: 'Robert Greene', read: '2023', title: 'The 48 Laws of Power' },
+  {
+    author: 'Robert Greene',
+    favorite: true,
+    read: '2023',
+    title: 'The 48 Laws of Power',
+  },
 
   // 2022
-  { author: 'Parag Parikh', read: '2022', title: 'Stocks to Riches' },
+  {
+    author: 'Parag Parikh',
+    favorite: true,
+    read: '2022',
+    title: 'Stocks to Riches',
+  },
   { author: 'Seneca', read: '2022', title: 'Letters to a Stoic' },
   { author: 'Plato', read: '2022', title: 'The Republic' },
   {
@@ -160,7 +209,12 @@ const raw: BookInput[] = [
   { author: 'Matt Ridley', read: '2022', title: 'The Red Queen' },
   { author: 'Mitch Albom', read: '2022', title: 'Tuesdays with Morrie' },
   { author: 'Robert Greene', read: '2022', title: 'The Art of Seduction' },
-  { author: 'David Deida', read: '2022', title: 'The Way of the Superior Man' },
+  {
+    author: 'David Deida',
+    favorite: true,
+    read: '2022',
+    title: 'The Way of the Superior Man',
+  },
   { author: 'Nassim Nicholas Taleb', read: '2022', title: 'Skin in the Game' },
   { author: 'Cal Newport', read: '2022', title: 'Deep Work' },
   { author: 'Alain de Botton', read: '2022', title: 'The Course of Love' },
@@ -174,15 +228,30 @@ const raw: BookInput[] = [
     read: '2022',
     title: 'Wabi Sabi: Japanese Wisdom for a Perfectly Imperfect Life',
   },
-  { author: 'Cal Newport', read: '2022', title: 'Digital Minimalism' },
+  {
+    author: 'Cal Newport',
+    favorite: true,
+    read: '2022',
+    title: 'Digital Minimalism',
+  },
 
   // 2021
   { author: 'Marcus Aurelius', read: '2021', title: 'Meditations' },
-  { author: 'Sun Tzu', read: '2021', title: 'The Art of War' },
+  { author: 'Sun Tzu', favorite: true, read: '2021', title: 'The Art of War' },
   { author: 'Paulo Coelho', read: '2021', title: 'The Archer' },
-  { author: 'Monika Halan', read: '2021', title: "Let's Talk Money" },
+  {
+    author: 'Monika Halan',
+    favorite: true,
+    read: '2021',
+    title: "Let's Talk Money",
+  },
   { author: 'Nassim Nicholas Taleb', read: '2021', title: 'Antifragile' },
-  { author: 'Seneca', read: '2021', title: 'On the Shortness of Life' },
+  {
+    author: 'Seneca',
+    favorite: true,
+    read: '2021',
+    title: 'On the Shortness of Life',
+  },
   {
     author: 'Reed Hastings & Erin Meyer',
     read: '2021',
@@ -194,10 +263,21 @@ const raw: BookInput[] = [
   { author: 'Peter Thiel', read: '2020', title: 'Zero to One' },
   { author: 'Christian Rudder', read: '2020', title: 'Dataclysm' },
   { author: 'Gautam Baid', read: '2020', title: 'The Joys of Compounding' },
-  { author: 'James Clear', read: '2020', title: 'Atomic Habits' },
-  { author: 'Morgan Housel', read: '2020', title: 'The Psychology of Money' },
+  {
+    author: 'James Clear',
+    favorite: true,
+    read: '2020',
+    title: 'Atomic Habits',
+  },
+  {
+    author: 'Morgan Housel',
+    favorite: true,
+    read: '2020',
+    title: 'The Psychology of Money',
+  },
   {
     author: 'Eric Jorgenson',
+    favorite: true,
     read: '2020',
     title: 'The Almanack of Naval Ravikant',
   },
