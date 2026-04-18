@@ -1,8 +1,19 @@
 import { motion } from 'framer-motion';
 import React, { useEffect, useMemo, useRef, useState } from 'react';
+import { FaAmazon } from 'react-icons/fa';
 import { books, type Book } from '../constants/books.tsx';
 import { darkModeColor, lightModeColor } from '../constants/colors.tsx';
 import { useTheme } from '../contexts/ThemeContext.tsx';
+
+// Change this to 'amazon.com' (or any other locale) to retarget
+// the "Buy on Amazon" links.
+const AMAZON_DOMAIN = 'amazon.in';
+
+const amazonSearchUrl = (title: string, author?: string): string => {
+  const query = [title, author].filter(Boolean).join(' ');
+  const params = new URLSearchParams({ i: 'stripbooks', k: query });
+  return `https://www.${AMAZON_DOMAIN}/s?${params.toString()}`;
+};
 
 type YearGroup = { books: Book[]; year: string };
 
@@ -286,6 +297,22 @@ const Books: React.FC = () => {
                           </p>
                         ) : null}
                       </div>
+
+                      <a
+                        aria-label={`Buy ${book.title} on ${AMAZON_DOMAIN}`}
+                        className={`flex shrink-0 items-center gap-1.5 self-center rounded-full border px-2.5 py-1.5 text-sm font-medium transition-colors sm:px-3 ${
+                          isDarkMode
+                            ? 'border-white/10 text-gray-300 hover:border-orange-400/50 hover:text-orange-300'
+                            : 'border-black/10 text-gray-600 hover:border-orange-500/60 hover:text-orange-600'
+                        }`}
+                        href={amazonSearchUrl(book.title, book.author)}
+                        rel="noopener noreferrer"
+                        target="_blank"
+                        title={`Buy on ${AMAZON_DOMAIN}`}
+                      >
+                        <FaAmazon className="text-base" />
+                        <span className="hidden sm:inline">Buy</span>
+                      </a>
                     </article>
                   </motion.li>
                 ))}
