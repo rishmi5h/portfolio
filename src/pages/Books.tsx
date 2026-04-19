@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion';
-import React, { useEffect, useMemo, useRef, useState } from 'react';
+import React, { useEffect, useMemo, useState } from 'react';
 import { FaAmazon } from 'react-icons/fa';
 import { books, type Book } from '../constants/books.tsx';
 import { darkModeColor, lightModeColor } from '../constants/colors.tsx';
@@ -39,10 +39,12 @@ const groupByYear = (all: Book[]): YearGroup[] => {
 // ────────────────────────────────────────────────────────────────
 // Book cover lookup
 //
-// Covers come from Open Library's public search API. Cards only
-// fire a fetch once they scroll into view, and the URL (or an
-// empty string for "no cover found") is cached in localStorage
-// so repeat visits are instant.
+// Covers come from Open Library's public search API. On mount we
+// kick off a fetch for every card that doesn't already have a
+// cached URL, capped at MAX_CONCURRENT_FETCHES in flight at once
+// so we don't hammer the API. Resolved URLs (or an empty string
+// for "no cover found") are cached in localStorage so repeat
+// visits skip the network entirely.
 // ────────────────────────────────────────────────────────────────
 
 const CACHE_PREFIX = 'bookcover:v1:';
@@ -64,10 +66,36 @@ const writeCachedCover = (slug: string, url: string): void => {
   }
 };
 
+// Module-level concurrency throttle so a single page mount doesn't
+// fire 90+ parallel requests at Open Library.
+const MAX_CONCURRENT_FETCHES = 6;
+let activeFetches = 0;
+const fetchWaitQueue: Array<() => void> = [];
+
+const acquireSlot = (): Promise<void> =>
+  new Promise<void>((resolve) => {
+    const tryAcquire = () => {
+      if (activeFetches < MAX_CONCURRENT_FETCHES) {
+        activeFetches++;
+        resolve();
+      } else {
+        fetchWaitQueue.push(tryAcquire);
+      }
+    };
+    tryAcquire();
+  });
+
+const releaseSlot = (): void => {
+  activeFetches--;
+  const next = fetchWaitQueue.shift();
+  if (next) next();
+};
+
 const fetchCoverUrl = async (
   title: string,
   author?: string,
 ): Promise<string> => {
+  await acquireSlot();
   try {
     const params = new URLSearchParams({ limit: '3', title });
     if (author) params.set('author', author);
@@ -82,6 +110,8 @@ const fetchCoverUrl = async (
       : '';
   } catch {
     return '';
+  } finally {
+    releaseSlot();
   }
 };
 
@@ -92,33 +122,11 @@ const BookCover: React.FC<{ book: Book; isDarkMode: boolean }> = ({
   const [coverUrl, setCoverUrl] = useState<string | undefined>(
     () => book.cover ?? readCachedCover(book.slug),
   );
-  const [inView, setInView] = useState(false);
-  const ref = useRef<HTMLDivElement>(null);
 
-  // Trigger: mark as in-view once the card approaches the viewport.
+  // Fire as soon as the card mounts (not when it scrolls into view).
+  // The module-level throttle keeps overall request volume bounded.
   useEffect(() => {
     if (coverUrl !== undefined) return;
-    const el = ref.current;
-    if (!el) return;
-    const observer = new IntersectionObserver(
-      (entries) => {
-        for (const entry of entries) {
-          if (entry.isIntersecting) {
-            setInView(true);
-            observer.disconnect();
-            return;
-          }
-        }
-      },
-      { rootMargin: '300px' },
-    );
-    observer.observe(el);
-    return () => observer.disconnect();
-  }, [coverUrl]);
-
-  // Fetch once we're in view and don't already have a value.
-  useEffect(() => {
-    if (!inView || coverUrl !== undefined) return;
     let cancelled = false;
     fetchCoverUrl(book.title, book.author).then((url) => {
       if (cancelled) return;
@@ -128,13 +136,12 @@ const BookCover: React.FC<{ book: Book; isDarkMode: boolean }> = ({
     return () => {
       cancelled = true;
     };
-  }, [inView, coverUrl, book.slug, book.title, book.author]);
+  }, [coverUrl, book.slug, book.title, book.author]);
 
   const hasCover = typeof coverUrl === 'string' && coverUrl.length > 0;
 
   return (
     <div
-      ref={ref}
       className={`flex h-20 w-14 shrink-0 items-center justify-center overflow-hidden rounded-md shadow-sm sm:h-24 sm:w-16 ${
         isDarkMode
           ? 'bg-gradient-to-br from-blue-500/10 to-pink-500/10'
@@ -145,6 +152,7 @@ const BookCover: React.FC<{ book: Book; isDarkMode: boolean }> = ({
         <img
           alt={`Cover of ${book.title}`}
           className="h-full w-full object-cover"
+          decoding="async"
           loading="lazy"
           src={coverUrl}
         />
