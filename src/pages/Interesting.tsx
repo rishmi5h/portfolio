@@ -100,6 +100,47 @@ const Interesting: React.FC = () => {
             />
           </motion.header>
 
+          {/* Now listening — Spotify embed */}
+          <motion.section className="space-y-3" variants={itemVariants}>
+            <p
+              className={`font-mono text-xs tracking-widest ${isDarkMode ? 'text-gray-400' : 'text-gray-500'}`}
+            >
+              ./listening
+            </p>
+            {/* Pin the theme so toggling site light/dark doesn't re-mount
+                the iframe and interrupt playback. */}
+            <iframe
+              allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+              allowFullScreen
+              frameBorder="0"
+              height="352"
+              loading="lazy"
+              src="https://open.spotify.com/embed/playlist/5qidNlF23wz4MYOsXrn4vs?utm_source=generator&theme=0"
+              style={{ borderRadius: 12 }}
+              title="Spotify playlist"
+              width="100%"
+            />
+            <p
+              className={`text-xs ${isDarkMode ? 'text-gray-500' : 'text-gray-500'}`}
+            >
+              Spotify only streams 30-second previews for non-Premium listeners
+              —{' '}
+              <a
+                className={`underline underline-offset-2 transition-colors ${
+                  isDarkMode
+                    ? 'text-gray-300 hover:text-green-400'
+                    : 'text-gray-700 hover:text-green-600'
+                }`}
+                href="https://open.spotify.com/playlist/5qidNlF23wz4MYOsXrn4vs"
+                rel="noopener noreferrer"
+                target="_blank"
+              >
+                open in Spotify
+              </a>{' '}
+              for full tracks.
+            </p>
+          </motion.section>
+
           {/* Items */}
           <motion.ul className="space-y-5" variants={containerVariants}>
             {interesting.map((item) => {
