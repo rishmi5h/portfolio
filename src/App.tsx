@@ -6,10 +6,9 @@ import { useKonamiCode } from './components/EasterEggs.tsx';
 import Footer from './components/Footer.tsx';
 import Navbar from './components/Navbar.tsx';
 import { ThemeProvider } from './contexts/ThemeContext.tsx';
-import Blog from './pages/Blog.tsx';
-import BlogPost from './pages/BlogPost.tsx';
 import Books from './pages/Books.tsx';
 import Home from './pages/Home.tsx';
+import Interesting from './pages/Interesting.tsx';
 import Projects from './pages/Projects.tsx';
 import Roast from './pages/Roast.tsx';
 import Skills from './pages/Skills.tsx';
@@ -69,8 +68,7 @@ export default function App() {
           <main className="flex-grow">
             <Routes>
               <Route element={<Roast />} path="/roast" />
-              <Route element={<Blog />} path="/blog" />
-              <Route element={<BlogPost />} path="/blog/:slug" />
+              <Route element={<Interesting />} path="/interesting" />
               <Route element={<Books />} path="/books" />
               <Route
                 element={
