@@ -91,6 +91,13 @@ const raw: Input[] = [
     url: 'https://nadh.in/blog/code-is-cheap/',
   },
   {
+    date: '2025-07-17',
+    note: "An essay on ambition as Nietzsche's 'will to power' — the drive to bend reality through effort, and what fills the gap when it's absent.",
+    tags: ['philosophy', 'psychology', 'essay'],
+    title: 'Illimitable Man — The Will to Power',
+    url: 'https://thesovereigncitadel.com/p/the-will-to-power',
+  },
+  {
     date: '2015-04-19',
     note: 'Sam Altman on his 30th birthday — 36 short life lessons, the kind of list you re-read every couple of years and notice different ones each time.',
     tags: ['life', 'essay'],
