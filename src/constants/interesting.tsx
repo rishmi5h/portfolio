@@ -84,11 +84,25 @@ const raw: Input[] = [
     url: 'https://shumer.dev/something-big-is-happening',
   },
   {
+    date: '2026-02-20',
+    note: 'The skateboard I ride. A street complete from Piso with the Flyin Munki graphic by Shrey Sawant.',
+    tags: ['skate', 'gear', 'personal'],
+    title: 'Piso Skateboards - Flyin Munki Complete',
+    url: 'https://pisoskateboards.com/products/flyin-munki-complete',
+  },
+  {
     date: '2026-01-30',
     note: "Kailash Nadh (Zerodha's CTO) on how LLM-assisted coding shifts the valuable skill from writing code to articulating the problem and directing the tool.",
     tags: ['llm', 'engineering', 'essay'],
     title: 'Kailash Nadh - Code is cheap. Show me the talk.',
     url: 'https://nadh.in/blog/code-is-cheap/',
+  },
+  {
+    date: '2026-01-26',
+    note: 'The school in Mulki, Karnataka where I learned to surf. Instruction, boards, and a surf house a short walk from the beach.',
+    tags: ['surf', 'travel', 'personal'],
+    title: 'Aquatic Indica Surf School',
+    url: 'https://aquaticindicasurfschool.com/',
   },
   {
     date: '2025-07-17',
