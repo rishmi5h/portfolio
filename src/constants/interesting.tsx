@@ -74,6 +74,18 @@ const raw: Input[] = [
     title: 'James Clear - Book Summaries',
     url: 'https://jamesclear.com/book-summaries',
   },
+  {
+    note: 'A course that walks you from NAND gates up to a working computer running a Tetris clone, across hardware and software. Free materials, a companion MIT Press textbook, and online Coursera versions.',
+    tags: ['course', 'computer-science', 'hardware'],
+    title: 'Nand to Tetris - Build a Modern Computer from First Principles',
+    url: 'https://www.nand2tetris.org/',
+  },
+  {
+    note: 'A free service for victims of intimate image abuse. Your images are hashed on your device; only the hash is shared with participating platforms for takedown.',
+    tags: ['safety', 'service'],
+    title: 'StopNCII.org',
+    url: 'https://stopncii.org/',
+  },
 
   // Dated essays (sorted newest first by the render logic)
   {
@@ -110,6 +122,13 @@ const raw: Input[] = [
     tags: ['philosophy', 'psychology', 'essay'],
     title: 'Illimitable Man - The Will to Power',
     url: 'https://thesovereigncitadel.com/p/the-will-to-power',
+  },
+  {
+    date: '2023-09-26',
+    note: 'One year in, the Tohands team shares what they got right and wrong building, manufacturing, and selling a hardware product from India.',
+    tags: ['hardware', 'startups', 'india'],
+    title: 'Praveen - 1 Year of Building a Hardware Product in India',
+    url: 'https://praveentohands.medium.com/1-year-of-building-hardware-product-in-india-what-we-learned-mistakes-adventure-de3e4c3509f4',
   },
   {
     date: '2018-04-10',
