@@ -1,10 +1,4 @@
-import {
-  FaEnvelope,
-  FaGithub,
-  FaInstagram,
-  FaLinkedin,
-  FaTwitter,
-} from 'react-icons/fa';
+import { FaEnvelope, FaGithub } from 'react-icons/fa';
 import { darkModeColor, lightModeColor } from '../constants/colors.tsx';
 import { useTheme } from '../contexts/ThemeContext.tsx';
 import SocialIcon from './SocialIcon.tsx';
@@ -20,21 +14,6 @@ const Footer = () => {
           Icon={FaGithub}
           link="https://github.com/rishmi5h"
           name="GitHub Profile"
-        />
-        <SocialIcon
-          Icon={FaLinkedin}
-          link="https://www.linkedin.com/in/rishmi5h/"
-          name="LinkedIn Profile"
-        />
-        <SocialIcon
-          Icon={FaInstagram}
-          link="https://www.instagram.com/rishmi5h/"
-          name="Instagram Profile"
-        />
-        <SocialIcon
-          Icon={FaTwitter}
-          link="https://twitter.com/rishmi5h"
-          name="Twitter Profile"
         />
         <SocialIcon
           Icon={FaEnvelope}
