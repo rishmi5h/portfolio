@@ -3,18 +3,20 @@
 // │                                                                  │
 // │   Prepend an entry to the `raw` array below:                     │
 // │     {                                                            │
-// │       date: '2026-04-22',                                        │
+// │       date: '2026-04-22',   // optional — use for dated essays,  │
+// │                             //   skip for evergreen sites/refs   │
 // │       title: 'What you want to surface',                         │
 // │       url:  'https://...'   // optional — include if it's a link │
 // │       note: 'Why it grabbed you.'   // optional short commentary │
 // │     }                                                            │
 // │                                                                  │
-// │   Entries are sorted by `date` (newest first). Tags (optional)   │
-// │   show as chips.                                                 │
+// │   Entries with no date sort to the top as "evergreen" picks.     │
+// │   Dated entries follow, newest first.                            │
+// │   Tags (optional) show as chips.                                 │
 // └──────────────────────────────────────────────────────────────────┘
 
 export type InterestingItem = {
-  date: string;
+  date?: string;
   note?: string;
   slug: string;
   tags?: string[];
@@ -33,8 +35,21 @@ const slugify = (s: string): string =>
 type Input = Omit<InterestingItem, 'slug'> & { slug?: string };
 
 const raw: Input[] = [
+  // Evergreen resources (no publication date — always-on references)
   {
-    date: '2026-04-22',
+    note: "The free online edition of Eric Jorgenson's curation of Naval Ravikant's writing on wealth, happiness, and judgment.",
+    tags: ['life', 'wealth', 'happiness'],
+    title:
+      'Eric Jorgenson — The Almanack of Naval Ravikant (free online edition)',
+    url: 'https://www.navalmanack.com/almanack-of-naval-ravikant/table-of-contents',
+  },
+  {
+    note: 'A curated reader of long-form essays worth your time — one piece on screen at a time, nothing else competing for your attention.',
+    tags: ['essays', 'reading'],
+    title: 'Read Something Wonderful',
+    url: 'https://readsomethingwonderful.com',
+  },
+  {
     note: "Farnam Street's evergreen compendium of mental models — a structured vocabulary for thinking across disciplines.",
     tags: ['mental-models', 'thinking'],
     title:
@@ -42,11 +57,26 @@ const raw: Input[] = [
     url: 'https://fs.blog/mental-models/',
   },
   {
-    date: '2026-04-22',
     note: "Paras Chopra's blog — a wide-ranging mix of writing on startups, first-principles thinking, AI, and consciousness.",
     tags: ['blog', 'thinking'],
     title: 'Paras Chopra — Inverted Passion',
     url: 'https://invertedpassion.com/',
+  },
+
+  // Dated essays (sorted newest first by the render logic)
+  {
+    date: '2026-02-09',
+    note: 'Matt Shumer argues AI has hit an inflection point where models can do real professional work autonomously, and that knowledge workers should engage with these tools now rather than wait.',
+    tags: ['ai', 'essay'],
+    title: 'Matt Shumer — Something Big Is Happening',
+    url: 'https://shumer.dev/something-big-is-happening',
+  },
+  {
+    date: '2026-01-30',
+    note: "Kailash Nadh (Zerodha's CTO) on how LLM-assisted coding shifts the valuable skill from writing code to articulating the problem and directing the tool.",
+    tags: ['llm', 'engineering', 'essay'],
+    title: 'Kailash Nadh — Code is cheap. Show me the talk.',
+    url: 'https://nadh.in/blog/code-is-cheap/',
   },
   {
     date: '2015-04-19',
@@ -54,6 +84,13 @@ const raw: Input[] = [
     tags: ['life', 'essay'],
     title: 'Sam Altman — The days are long but the decades are short',
     url: 'https://blog.samaltman.com/the-days-are-long-but-the-decades-are-short',
+  },
+  {
+    date: '2019-06-04',
+    note: 'A wide-ranging two-hour conversation with Naval Ravikant covering wealth, happiness, meditation, and reading.',
+    tags: ['podcast', 'life', 'wealth'],
+    title: 'Joe Rogan Experience #1309 — Naval Ravikant',
+    url: 'https://www.youtube.com/watch?v=3qHkcs3kG44',
   },
   {
     date: '2013-07-01',
@@ -66,4 +103,10 @@ const raw: Input[] = [
 
 export const interesting: InterestingItem[] = raw
   .map((item) => ({ ...item, slug: item.slug ?? slugify(item.title) }))
-  .sort((a, b) => (a.date < b.date ? 1 : -1));
+  .sort((a, b) => {
+    // Undated (evergreen) entries float to the top in source order.
+    if (!a.date && !b.date) return 0;
+    if (!a.date) return -1;
+    if (!b.date) return 1;
+    return a.date < b.date ? 1 : -1;
+  });

@@ -124,9 +124,19 @@ const Interesting: React.FC = () => {
                     <div
                       className={`font-mono text-xs tracking-widest ${isDarkMode ? 'text-gray-400' : 'text-gray-500'}`}
                     >
-                      <time dateTime={item.date}>
-                        {formatDate(item.date).toLowerCase()}
-                      </time>
+                      {item.date ? (
+                        <time dateTime={item.date}>
+                          {formatDate(item.date).toLowerCase()}
+                        </time>
+                      ) : (
+                        <span
+                          className={
+                            isDarkMode ? 'text-blue-300/70' : 'text-blue-500/70'
+                          }
+                        >
+                          evergreen
+                        </span>
+                      )}
                     </div>
 
                     <div className="mt-2">
