@@ -98,6 +98,13 @@ const raw: Input[] = [
     url: 'https://thesovereigncitadel.com/p/the-will-to-power',
   },
   {
+    date: '2018-04-10',
+    note: "Sam Altman's productivity playbook. His core claim: what you work on matters more than how fast you do it, then practical tactics on prioritisation, sleep, and focus.",
+    tags: ['productivity', 'life', 'essay'],
+    title: 'Sam Altman - Productivity',
+    url: 'https://blog.samaltman.com/productivity',
+  },
+  {
     date: '2015-04-19',
     note: "Sam Altman's 30th-birthday list of 36 short life lessons. The kind you re-read every few years and notice different ones.",
     tags: ['life', 'essay'],
@@ -125,6 +132,13 @@ const raw: Input[] = [
     title:
       'Angela Duckworth - Grit: The Power of Passion and Perseverance (TED)',
     url: 'https://www.youtube.com/watch?v=H14bBuluwB8',
+  },
+  {
+    date: '2008-03-04',
+    note: 'Kevin Kelly argues a creator only needs 1,000 true fans (people who buy everything you make) to earn a living. The economics of the internet make this possible for the first time.',
+    tags: ['creators', 'internet', 'essay'],
+    title: 'Kevin Kelly - 1,000 True Fans',
+    url: 'https://kk.org/thetechnium/1000-true-fans/',
   },
 ];
 
