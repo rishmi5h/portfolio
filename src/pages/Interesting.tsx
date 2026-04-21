@@ -126,7 +126,7 @@ const Interesting: React.FC = () => {
                 className={`text-xs ${isDarkMode ? 'text-gray-500' : 'text-gray-500'}`}
               >
                 Spotify only streams 30-second previews for non-Premium
-                listeners —{' '}
+                listeners.{' '}
                 <a
                   className={`underline underline-offset-2 transition-colors ${
                     isDarkMode
@@ -137,7 +137,7 @@ const Interesting: React.FC = () => {
                   rel="noopener noreferrer"
                   target="_blank"
                 >
-                  open in Spotify
+                  Open in Spotify
                 </a>{' '}
                 for full tracks.
               </p>
