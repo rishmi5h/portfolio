@@ -5,6 +5,7 @@ import CustomCursor from './components/CustomCursor.tsx';
 import { useKonamiCode } from './components/EasterEggs.tsx';
 import Footer from './components/Footer.tsx';
 import Navbar from './components/Navbar.tsx';
+import ScrollToTop from './components/ScrollToTop.tsx';
 import { ThemeProvider } from './contexts/ThemeContext.tsx';
 import Books from './pages/Books.tsx';
 import Home from './pages/Home.tsx';
@@ -44,6 +45,7 @@ export default function App() {
   return (
     <ThemeProvider>
       <Router>
+        <ScrollToTop />
         {konamiCodeSuccess && (
           <div className="fixed left-0 top-0 z-50 w-full bg-green-500 py-2 text-center text-white">
             Congratulations! You&apos;ve unlocked the Konami code!
