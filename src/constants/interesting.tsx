@@ -62,6 +62,18 @@ const raw: Input[] = [
     title: 'Paras Chopra — Inverted Passion',
     url: 'https://invertedpassion.com/',
   },
+  {
+    note: 'Morgan Housel and others at Collaborative Fund writing on investing, behavioural finance, and long-term thinking.',
+    tags: ['investing', 'behavioural-finance', 'essay'],
+    title: 'Collaborative Fund — Collab Blog',
+    url: 'https://collabfund.com/blog/',
+  },
+  {
+    note: "James Clear's running collection of three-sentence book summaries — handy for deciding whether a book is worth reading in full.",
+    tags: ['books', 'reading', 'summaries'],
+    title: 'James Clear — Book Summaries',
+    url: 'https://jamesclear.com/book-summaries',
+  },
 
   // Dated essays (sorted newest first by the render logic)
   {
