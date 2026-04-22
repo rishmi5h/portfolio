@@ -35,6 +35,13 @@ const slugify = (s: string): string =>
 type Input = Omit<InterestingItem, 'slug'> & { slug?: string };
 
 const raw: Input[] = [
+  // Pinned quote — always first.
+  {
+    tags: ['quote', 'life'],
+    title:
+      'Confucius: "We have two lives; the second begins when we realise we only have one."',
+  },
+
   // Evergreen resources (no publication date - always-on references)
   {
     note: "Eric Jorgenson's book on Naval Ravikant, readable free online. Covers wealth, happiness, and judgment.",
@@ -172,6 +179,13 @@ const raw: Input[] = [
     tags: ['creators', 'internet', 'essay'],
     title: 'Kevin Kelly - 1,000 True Fans',
     url: 'https://kk.org/thetechnium/1000-true-fans/',
+  },
+  {
+    date: '1996-01-03',
+    note: 'Bill Gates predicts, thirty years ago, that the real money on the internet will come from the people making content rather than the infrastructure beneath it. Aged well.',
+    tags: ['internet', 'content', 'essay'],
+    title: 'Bill Gates - Content Is King',
+    url: 'https://kyrgyzstan.unfpa.org/sites/default/files/pub-pdf/content-is-king.pdf',
   },
 ];
 
