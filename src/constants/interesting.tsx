@@ -39,7 +39,7 @@ const raw: Input[] = [
   {
     tags: ['quote', 'life'],
     title:
-      'Confucius: "We have two lives; the second begins when we realise we only have one."',
+      'Confucius: "We have two lives, the second begins when we realise we only have one."',
   },
 
   // Evergreen resources (no publication date - always-on references)
