@@ -40,6 +40,9 @@ const slugify = (s: string): string =>
 type BookInput = Omit<Book, 'slug'> & { slug?: string };
 
 const raw: BookInput[] = [
+  // 2026
+  { author: 'Matthew Walker', read: '2026', title: 'Why We Sleep' },
+
   // 2025
   {
     author: 'Fredrick J. Lovre',
