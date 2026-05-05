@@ -117,6 +117,13 @@ const raw: Input[] = [
     url: 'https://nadh.in/blog/code-is-cheap/',
   },
   {
+    date: '2026-01-22',
+    note: 'Alexis McElroy makes the case that a rich inner life and your own pursuits make you more compelling than constant availability ever could.',
+    tags: ['essay', 'attention', 'life'],
+    title: 'Alexis McElroy - The Art of Being Unreachable',
+    url: 'https://themuseandthemelody.substack.com/p/the-art-of-being-unreachable',
+  },
+  {
     date: '2026-01-26',
     note: 'The school in Mulki, Karnataka where I learned to surf. Instruction, boards, and a surf house a short walk from the beach.',
     tags: ['surf', 'travel', 'personal'],
