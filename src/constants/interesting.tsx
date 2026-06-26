@@ -145,11 +145,25 @@ const raw: Input[] = [
     url: 'https://praveentohands.medium.com/1-year-of-building-hardware-product-in-india-what-we-learned-mistakes-adventure-de3e4c3509f4',
   },
   {
+    date: '2020-12-13',
+    note: 'A long list of unconventional things people quietly assume are off-limits but absolutely are not. Hiring researchers, asking strangers for help, buying time back. Worth re-reading every year.',
+    tags: ['essay', 'life', 'mindset'],
+    title: "Milan Cvitkovic - Things You're Allowed to Do",
+    url: 'https://milan.cvitkovic.net/writing/things_youre_allowed_to_do/',
+  },
+  {
     date: '2018-04-10',
     note: "Sam Altman's productivity playbook. His core claim: what you work on matters more than how fast you do it, then practical tactics on prioritisation, sleep, and focus.",
     tags: ['productivity', 'life', 'essay'],
     title: 'Sam Altman - Productivity',
     url: 'https://blog.samaltman.com/productivity',
+  },
+  {
+    date: '2017-10-11',
+    note: 'Pavel Durov on his 33rd birthday lists the seven things he never does: alcohol, meat (fish is fine), pills, nicotine, caffeine, fast food and sugar, and TV. His read is that abstaining from each one buys back clarity and productivity.',
+    tags: ['life', 'productivity', 'health'],
+    title: 'Pavel Durov - 7 things I never do',
+    url: 'https://t.me/durov/65',
   },
   {
     date: '2015-04-19',
