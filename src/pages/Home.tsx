@@ -182,15 +182,8 @@ const Home = () => {
             <p
               className={`text-lg font-medium tracking-wide sm:text-xl md:text-2xl ${isDarkMode ? 'text-gray-300' : 'text-gray-700'}`}
             >
-              software engineer
+              ai maximalist
             </p>
-            <span className="text-lg sm:text-xl">·</span>
-            <p
-              className={`text-lg font-medium tracking-wide sm:text-xl md:text-2xl ${isDarkMode ? 'text-gray-300' : 'text-gray-700'}`}
-            >
-              India
-            </p>
-            <span className="text-lg sm:text-xl">🇮🇳</span>
           </motion.div>
         </motion.div>
 
