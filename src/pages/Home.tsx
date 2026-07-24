@@ -221,7 +221,7 @@ const Home = () => {
 
       {/* Roast Section */}
       <div
-        className={`flex min-h-screen flex-col items-center justify-center transition-colors duration-300 ${isDarkMode ? darkModeColor : lightModeColor}`}
+        className={`relative flex min-h-screen flex-col items-center justify-center transition-colors duration-300 ${isDarkMode ? darkModeColor : lightModeColor}`}
         id="roast"
         style={{ scrollSnapAlign: 'start', scrollSnapStop: 'always' }}
       >
@@ -286,6 +286,32 @@ const Home = () => {
               </button>
             </div>
           )}
+        </div>
+
+        {/* Scroll indicator */}
+        <div className="absolute bottom-10">
+          <a className="group relative block" href="#skills">
+            <span
+              className={`absolute inset-0 rounded-full ${isDarkMode ? 'bg-white/10' : 'bg-black/5'} scroll-indicator-ring`}
+              style={{ height: 48, left: -4, top: -4, width: 48 }}
+            />
+            <motion.svg
+              animate={{ y: [0, 8, 0] }}
+              className={`h-10 w-10 ${isDarkMode ? 'text-gray-400' : 'text-gray-500'}`}
+              fill="none"
+              stroke="currentColor"
+              transition={{ duration: 2, ease: 'easeInOut', repeat: Infinity }}
+              viewBox="0 0 24 24"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M19 14l-7 7m0 0l-7-7m7 7V3"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth={1.5}
+              />
+            </motion.svg>
+          </a>
         </div>
       </div>
     </>
